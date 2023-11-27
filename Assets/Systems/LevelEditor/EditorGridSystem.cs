@@ -28,6 +28,7 @@ public class EditorGridSystem : FSystem
 	public Tile consoleTile;
 	public Tile coinTile;
 	public Tile switchTile;
+
 	public Texture2D placingCursor;
 	public string defaultDecoration;
 	public PaintableGrid paintableGrid;
@@ -198,7 +199,30 @@ public class EditorGridSystem : FSystem
 						Debug.Log("Warning: Skipped console from file " + levelKey + ". Wrong data!");
 					}
 					break;
-				case "door":
+                case "switch":
+                    try
+                    {
+                        position = getPositionFromXElement(child);
+                        orientation = (Direction.Dir)int.Parse(child.Attributes.GetNamedItem("direction").Value);
+
+                        setTile(position.Item1, position.Item2, Cell.Switch, orientation);
+
+                        List<string> slotsID = new List<string>();
+                        foreach (XmlNode slot in child.ChildNodes)
+                        {
+                            slotsID.Add(slot.Attributes.GetNamedItem("slotId").Value);
+                        }
+                        ((Switch)paintableGrid.floorObjects[position]).slots = slotsID.ToArray();
+
+                        int state = int.Parse(child.Attributes.GetNamedItem("state").Value);
+                        ((Switch)paintableGrid.floorObjects[position]).state = state == 1;
+                    }
+                    catch
+                    {
+                        Debug.Log("Warning: Skipped switch from file " + levelKey + ". Wrong data!");
+                    }
+                    break;
+                case "door":
 					try
 					{
 						position = getPositionFromXElement(child);
@@ -435,6 +459,18 @@ public class Console : FloorObject
 	}
 }
 
+public class Switch : FloorObject
+{
+    public string[] slots;
+    public bool state;
+
+    public Switch(Direction.Dir orientation, int line, int col) : base(Cell.Switch, orientation, line, col)
+    {
+        this.slots = new string[0];
+        this.state = true;
+    }
+}
+
 public class Door : FloorObject
 {
 	public string slot;
@@ -443,16 +479,6 @@ public class Door : FloorObject
 	{
 		this.slot = "0";
 	}
-}
-
-public class Switch : FloorObject
-{
-    public string slot;
-
-    public Switch(Direction.Dir orientation, int line, int col) : base(Cell.Switch, orientation, line, col)
-    {
-        this.slot = "0";
-    }
 }
 
 public class Robot : FloorObject
