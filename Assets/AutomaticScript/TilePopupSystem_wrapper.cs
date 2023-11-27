@@ -7,6 +7,7 @@ public class TilePopupSystem_wrapper : BaseWrapper
 	public UnityEngine.GameObject inputLinePopup;
 	public UnityEngine.GameObject rangePopup;
 	public UnityEngine.GameObject consoleSlotsPopup;
+	public UnityEngine.GameObject switchSlotsPopup;
 	public UnityEngine.GameObject doorSlotPopup;
 	public UnityEngine.GameObject furniturePopup;
 	public PaintableGrid paintableGrid;
@@ -18,6 +19,7 @@ public class TilePopupSystem_wrapper : BaseWrapper
 		MainLoop.initAppropriateSystemField (system, "inputLinePopup", inputLinePopup);
 		MainLoop.initAppropriateSystemField (system, "rangePopup", rangePopup);
 		MainLoop.initAppropriateSystemField (system, "consoleSlotsPopup", consoleSlotsPopup);
+		MainLoop.initAppropriateSystemField (system, "switchSlotsPopup", switchSlotsPopup);
 		MainLoop.initAppropriateSystemField (system, "doorSlotPopup", doorSlotPopup);
 		MainLoop.initAppropriateSystemField (system, "furniturePopup", furniturePopup);
 		MainLoop.initAppropriateSystemField (system, "paintableGrid", paintableGrid);
@@ -57,6 +59,16 @@ public class TilePopupSystem_wrapper : BaseWrapper
 	public void popupConsoleToggle(System.Boolean newData)
 	{
 		MainLoop.callAppropriateSystemMethod (system, "popupConsoleToggle", newData);
+	}
+
+	public void popupSwitchSlots(System.String newData)
+	{
+		MainLoop.callAppropriateSystemMethod (system, "popupSwitchSlots", newData);
+	}
+
+	public void popupSwitchToggle(System.Boolean newData)
+	{
+		MainLoop.callAppropriateSystemMethod (system, "popupSwitchToggle", newData);
 	}
 
 	public void popupDoorSlot(System.String newData)
