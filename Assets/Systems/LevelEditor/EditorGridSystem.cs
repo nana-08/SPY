@@ -27,6 +27,7 @@ public class EditorGridSystem : FSystem
 	public Tile doorTile;
 	public Tile consoleTile;
 	public Tile coinTile;
+	public Tile switchTile;
 	public Texture2D placingCursor;
 	public string defaultDecoration;
 	public PaintableGrid paintableGrid;
@@ -299,6 +300,7 @@ public class EditorGridSystem : FSystem
 						Cell.Door => new Door(rotation, line, col),
 						Cell.Console => new Console(rotation, line, col),
 						Cell.Coin => new FloorObject(Cell.Coin, Direction.Dir.North, line, col, false, false),
+						Cell.Switch => new Switch(rotation, line, col),
 						_ => null
 					};
 			}
@@ -362,6 +364,7 @@ public class EditorGridSystem : FSystem
 			Cell.Door => doorTile,
 			Cell.Console => consoleTile,
 			Cell.Coin => coinTile,
+			Cell.Switch => switchTile,
 			_ => null
 		};
 	}
@@ -386,7 +389,8 @@ public enum Cell
 	Decoration = 10002,
 	Door = 10003,
 	Console = 10004,
-	Coin = 10005
+	Coin = 10005,
+	Switch = 10006
 }
 
 public class FloorObject
@@ -439,6 +443,16 @@ public class Door : FloorObject
 	{
 		this.slot = "0";
 	}
+}
+
+public class Switch : FloorObject
+{
+    public string slot;
+
+    public Switch(Direction.Dir orientation, int line, int col) : base(Cell.Switch, orientation, line, col)
+    {
+        this.slot = "0";
+    }
 }
 
 public class Robot : FloorObject
