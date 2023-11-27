@@ -1725,7 +1725,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 539661434}
+  - {fileID: 7058834408997241596}
   - {fileID: 1667186166}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -2445,18 +2445,6 @@ PrefabInstance:
     - {fileID: 6592150674149379878, guid: d95b7150b03a41b45be0c429720941da, type: 3}
     - {fileID: 6592150674149379874, guid: d95b7150b03a41b45be0c429720941da, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d95b7150b03a41b45be0c429720941da, type: 3}
---- !u!1 &539661433 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7058834408463095426, guid: a3a754e0e3ad7ba48b606f457784c1d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 7058834408997241595}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &539661434 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7058834408463095425, guid: a3a754e0e3ad7ba48b606f457784c1d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 7058834408997241595}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &542137664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5726,12 +5714,6 @@ PrefabInstance:
     - {fileID: 1924019916, guid: d8b86bf11d6316f439d36b197173508e, type: 3}
     - {fileID: 1924019917, guid: d8b86bf11d6316f439d36b197173508e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d8b86bf11d6316f439d36b197173508e, type: 3}
---- !u!1 &1502077918 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7058834408334303525, guid: a3a754e0e3ad7ba48b606f457784c1d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 7058834408997241595}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1502577898
 GameObject:
   m_ObjectHideFlags: 0
@@ -5940,12 +5922,6 @@ PrefabInstance:
     - {fileID: 2214813453397413259, guid: c597200862495be48a0fcaf45e220594, type: 3}
     - {fileID: 2214813453397413263, guid: c597200862495be48a0fcaf45e220594, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c597200862495be48a0fcaf45e220594, type: 3}
---- !u!1 &1538728921 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7058834408368955682, guid: a3a754e0e3ad7ba48b606f457784c1d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 7058834408997241595}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1554489155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6821,13 +6797,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71bc251be7f9dd49b4a39d5e466cd2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabGameData: {fileID: 3833649377614804033, guid: 0c781d4c9bf00bb48ad0e4df8f089e03,
-    type: 3}
-  campagneMenu: {fileID: 1934608679}
+  prefabGameData: {fileID: 0}
+  mainCanvas: {fileID: 0}
+  compLevelButton: {fileID: 0}
+  listOfCampaigns: {fileID: 0}
+  listOfLevels: {fileID: 0}
   playButton: {fileID: 1589537337}
   quitButton: {fileID: 1170870589}
-  backButton: {fileID: 1880403777}
-  cList: {fileID: 2087945181}
+  loadingScreen: {fileID: 0}
+  sessionIdPanel: {fileID: 0}
+  deletableElement: {fileID: 0}
+  scenarioName: {fileID: 0}
+  scenarioAbstract: {fileID: 0}
+  detailsCampaign: {fileID: 0}
+  virtualKeyboard: {fileID: 0}
+  progress: {fileID: 0}
+  logs: {fileID: 0}
 --- !u!114 &1645587986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6902,16 +6887,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aace754a597593b42b497e4ae7190bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelSelectComp: {fileID: 539661433}
   panelInfoComp: {fileID: 235044626}
-  panelInfoUser: {fileID: 1538728921}
-  scrollViewComp: {fileID: 1502077918}
-  pathParamComp: /StreamingAssets/ParamPrefab/ParamCompetence.csv
-  prefabCateComp: {fileID: 2122203360818857131, guid: 91626b1ceccb0c74c8e262a420ad75a5,
-    type: 3}
   prefabComp: {fileID: 1219861198870165607, guid: ee4f2308b6bfd17479355d31757662ad,
     type: 3}
   ContentCompMenu: {fileID: 133220021}
+  compatibleLevelsPanel: {fileID: 0}
+  competenciesPanel: {fileID: 0}
+  levelCompatiblePrefab: {fileID: 0}
+  contentListOfCompatibleLevel: {fileID: 0}
+  contentInfoCompatibleLevel: {fileID: 0}
+  deletableElement: {fileID: 0}
+  contentScenario: {fileID: 0}
+  testLevelBt: {fileID: 0}
+  downloadLevelBt: {fileID: 0}
+  addToScenario: {fileID: 0}
+  savingPanel: {fileID: 0}
+  editBriefingPanel: {fileID: 0}
+  briefingItemPrefab: {fileID: 0}
+  scenarioAbstract: {fileID: 0}
+  scenarioName: {fileID: 0}
+  scenarioContent: {fileID: 0}
+  loadingScenarioContent: {fileID: 0}
+  mainCanvas: {fileID: 0}
 --- !u!1 &1649896675
 GameObject:
   m_ObjectHideFlags: 0
@@ -9077,3 +9074,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3a754e0e3ad7ba48b606f457784c1d1, type: 3}
+--- !u!4 &7058834408997241596 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 7058834408997241595}
+  m_PrefabAsset: {fileID: 0}

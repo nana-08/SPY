@@ -27354,7 +27354,7 @@ MonoBehaviour:
   doorTile: {fileID: 11400000, guid: 24211b29d3dd2914cb45de8e4c75b6e3, type: 2}
   consoleTile: {fileID: 11400000, guid: 6e0f23fa94ad7284bb2ccbbae8290213, type: 2}
   coinTile: {fileID: 11400000, guid: b4ed4540a2c4ad044bfb96663fd0a66a, type: 2}
-  switchTile: {fileID: 0}
+  switchTile: {fileID: 11400000, guid: f58b662d334c559449c290092398fdfe, type: 2}
   placingCursor: {fileID: 2800000, guid: 28bb5c6e5b0501043b0e2755e3cde5c2, type: 3}
   defaultDecoration: Modern Furniture/Prefabs/Coffee Table
   paintableGrid: {fileID: 1662234106}
