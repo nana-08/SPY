@@ -986,7 +986,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15915744687898624
-    m_Localized: "Cr\xE9er une porte"
+    m_Localized: "Cr\xE9er un interrupteur"
     m_Metadata:
       m_Items: []
   - m_Id: 15915769711116288
@@ -1060,8 +1060,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 15922479473442816
     m_Localized: "Cette section vous permet de d\xE9finir la liste des<br>slots contr\xF4l\xE9s
-      par ce terminal (Chaque num\xE9ro<br>de slot doit \xEAtre s\xE9par\xE9 par
-      une virgule)"
+      par cet interrupteur (Chaque num\xE9ro<br>de slot doit \xEAtre s\xE9par\xE9
+      par une virgule)"
     m_Metadata:
       m_Items: []
   - m_Id: 15922676974829568
@@ -1291,7 +1291,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 18085207671652352
-    m_Localized: Porte
+    m_Localized: Inter.
     m_Metadata:
       m_Items: []
   - m_Id: 18085240219451392
