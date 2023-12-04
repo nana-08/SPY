@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a851999ad524fd640a3b2ec45d400d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: "Trouve un terminal pour<br>me d\xE9sactiver !"
+  text: "Trouve un terminal ou un interrupteur pour<br>me d\xE9sactiver !"
 --- !u!114 &5784465783275252092
 MonoBehaviour:
   m_ObjectHideFlags: 0

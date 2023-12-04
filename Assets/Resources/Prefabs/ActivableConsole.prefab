@@ -51,6 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
+  targetX: -1
+  targetY: -1
 --- !u!114 &-5585399694907766432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a851999ad524fd640a3b2ec45d400d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: active moi avec une action !
+  text: Active moi avec une action !
 --- !u!65 &7312745320450969933
 BoxCollider:
   m_ObjectHideFlags: 0
