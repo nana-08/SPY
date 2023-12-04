@@ -130,7 +130,10 @@ public class LevelGenerator : FSystem {
 				case "console":
 					readXMLConsole(child);
 					break;
-				case "door":
+                case "switch":
+                    readXMLSwitch(child);
+                    break;
+                case "door":
 					createDoor(int.Parse(child.Attributes.GetNamedItem("posX").Value), int.Parse(child.Attributes.GetNamedItem("posY").Value),
 					(Direction.Dir)int.Parse(child.Attributes.GetNamedItem("direction").Value), int.Parse(child.Attributes.GetNamedItem("slotId").Value));
 					break;
@@ -356,7 +359,21 @@ public class LevelGenerator : FSystem {
 		GameObjectManager.bind(activable);
 	}
 
-	private void createSpawnExit(int gridX, int gridY, bool type, bool hideExit = false){
+    private void createSwitch(int state, int gridX, int gridY, List<int> slotIDs, Direction.Dir orientation)
+    {
+		Debug.Log("je passe dans createSwitch");
+        GameObject activable = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/FloorSwitch") as GameObject, LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
+
+        activable.GetComponent<Activable>().slotID = slotIDs;
+        activable.GetComponent<Position>().x = gridX;
+        activable.GetComponent<Position>().y = gridY;
+        activable.GetComponent<Direction>().direction = orientation;
+        if (state == 1)
+            activable.AddComponent<TurnedOn>();
+        GameObjectManager.bind(activable);
+    }
+
+    private void createSpawnExit(int gridX, int gridY, bool type, bool hideExit = false){
 		GameObject spawnExit;
 		if(type)
 			spawnExit = GameObject.Instantiate<GameObject>(Resources.Load ("Prefabs/TeleporterSpawn") as GameObject, LevelGO.transform.position + new Vector3(gridY*3,1.5f,gridX*3), Quaternion.Euler(-90,0,0), LevelGO.transform);
@@ -442,4 +459,17 @@ public class LevelGenerator : FSystem {
 		createConsole(int.Parse(activableNode.Attributes.GetNamedItem("state").Value), int.Parse(activableNode.Attributes.GetNamedItem("posX").Value), int.Parse(activableNode.Attributes.GetNamedItem("posY").Value),
 		 slotsID, (Direction.Dir)int.Parse(activableNode.Attributes.GetNamedItem("direction").Value));
 	}
+
+    private void readXMLSwitch(XmlNode activableNode)
+    {
+        List<int> slotsID = new List<int>();
+
+        foreach (XmlNode child in activableNode.ChildNodes)
+        {
+            slotsID.Add(int.Parse(child.Attributes.GetNamedItem("slotId").Value));
+        }
+
+        createSwitch(int.Parse(activableNode.Attributes.GetNamedItem("state").Value), int.Parse(activableNode.Attributes.GetNamedItem("posX").Value), int.Parse(activableNode.Attributes.GetNamedItem("posY").Value),
+         slotsID, (Direction.Dir)int.Parse(activableNode.Attributes.GetNamedItem("direction").Value));
+    }
 }
