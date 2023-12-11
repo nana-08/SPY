@@ -28,6 +28,7 @@ public class EditorGridSystem : FSystem
 	public Tile consoleTile;
 	public Tile coinTile;
 	public Tile switchTile;
+	public Tile batteryTile;
 
 	public Texture2D placingCursor;
 	public string defaultDecoration;
@@ -284,7 +285,19 @@ public class EditorGridSystem : FSystem
 						Debug.Log("Warning: Skipped decoration from file " + levelKey + ". Wrong data!");
 					}
 					break;
-			}
+                case "battery":
+                    try
+                    {
+                        position = getPositionFromXElement(child);
+                        orientation = (Direction.Dir)int.Parse(child.Attributes.GetNamedItem("direction").Value);
+                        setTile(position.Item1, position.Item2, Cell.Battery, orientation);
+                    }
+                    catch
+                    {
+                        Debug.Log("Warning: Skipped battery from file " + levelKey + ". Wrong data!");
+                    }
+                    break;
+            }
 		}
 	}
 
@@ -325,6 +338,7 @@ public class EditorGridSystem : FSystem
 						Cell.Console => new Console(rotation, line, col),
 						Cell.Coin => new FloorObject(Cell.Coin, Direction.Dir.North, line, col, false, false),
 						Cell.Switch => new Switch(rotation, line, col),
+						Cell.Battery => new Battery(rotation, line, col),
 						_ => null
 					};
 			}
@@ -414,7 +428,8 @@ public enum Cell
 	Door = 10003,
 	Console = 10004,
 	Coin = 10005,
-	Switch = 10006
+	Switch = 10006,
+	Battery = 10007
 }
 
 public class FloorObject
@@ -445,6 +460,15 @@ public class DecorationObject : FloorObject
 	{
 		this.path = path;
 	}
+}
+
+public class Battery : FloorObject
+{
+    public string path;
+
+    public Battery(Direction.Dir orientation, int line, int col) : base(Cell.Battery, orientation, line, col)
+    {
+    }
 }
 
 public class Console : FloorObject
