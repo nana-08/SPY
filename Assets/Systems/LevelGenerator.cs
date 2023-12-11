@@ -159,7 +159,10 @@ public class LevelGenerator : FSystem {
 				case "decoration":
 					createDecoration(child.Attributes.GetNamedItem("name").Value, int.Parse(child.Attributes.GetNamedItem("posX").Value), int.Parse(child.Attributes.GetNamedItem("posY").Value), (Direction.Dir)int.Parse(child.Attributes.GetNamedItem("direction").Value));
 					break;
-				case "script":
+                case "battery":
+                    createBattery(int.Parse(child.Attributes.GetNamedItem("posX").Value), int.Parse(child.Attributes.GetNamedItem("posY").Value), (Direction.Dir)int.Parse(child.Attributes.GetNamedItem("direction").Value));
+                    break;
+                case "script":
 					UIRootContainer.EditMode editModeByUser = UIRootContainer.EditMode.Locked;
 					XmlNode editMode = child.Attributes.GetNamedItem("editMode");
 					int tmpValue;
@@ -341,7 +344,17 @@ public class LevelGenerator : FSystem {
 		GameObjectManager.bind(decoration);
 	}
 
-	private void createConsole(int state, int gridX, int gridY, List<int> slotIDs, Direction.Dir orientation)
+    private void createBattery(int gridX, int gridY, Direction.Dir orientation)
+    {
+        GameObject battery = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/Battery/PileOfBatteries") as GameObject, LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
+
+        battery.GetComponent<Position>().x = gridX;
+        battery.GetComponent<Position>().y = gridY;
+        battery.GetComponent<Direction>().direction = orientation;
+        GameObjectManager.bind(battery);
+    }
+
+    private void createConsole(int state, int gridX, int gridY, List<int> slotIDs, Direction.Dir orientation)
 	{
 		GameObject activable = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/ActivableConsole") as GameObject, LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
 
