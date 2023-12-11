@@ -144,7 +144,11 @@ public class TilePopupSystem : FSystem
 					}
 					furniturePopup.GetComponentInChildren<TMP_Dropdown>().value = i;
 					break;
-			}
+                case Battery battery:
+                    // enable popups
+                    GameObjectManager.setGameObjectState(orientationPopup, true);
+                    break;
+            }
 		}
 
 		if (selectedObject != null)

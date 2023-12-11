@@ -464,8 +464,6 @@ public class DecorationObject : FloorObject
 
 public class Battery : FloorObject
 {
-    public string path;
-
     public Battery(Direction.Dir orientation, int line, int col) : base(Cell.Battery, orientation, line, col)
     {
     }
