@@ -261,8 +261,11 @@ public class SaveFileSystem : FSystem
 				case DecorationObject deco:
 					levelExport += "\t<decoration name=\""+ deco.path + "\" posX=\"" + (deco.col + 1 - minCol) + "\" posY=\"" + (deco.line + 1 - minLine) + "\" direction=\"" + (int)deco.orientation + "\" />\n\n";
 					break;
+                case Battery battery:
+                    levelExport += "\t<battery posX=\"" + (battery.col + 1 - minCol) + "\" posY=\"" + (battery.line + 1 - minLine) + "\" direction=\"" + (int)battery.orientation + "\" />\n\n";
+                    break;
 
-				default:
+                default:
 					if (fo.type != Cell.Coin)
 					{
 						Debug.Log("Unexpected floor object type, object ignored: " + fo.type);
