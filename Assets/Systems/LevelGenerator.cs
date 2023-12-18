@@ -346,7 +346,7 @@ public class LevelGenerator : FSystem {
 
     private void createBattery(int gridX, int gridY, Direction.Dir orientation)
     {
-        GameObject battery = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/PileOfBatteries") as GameObject, LevelGO.transform.position + new Vector3(gridY*3,1.5f,gridX*3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
+        GameObject battery = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/Batteries/PileOfBatteries") as GameObject, LevelGO.transform.position + new Vector3(gridY*3,1.5f,gridX*3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
 
         battery.GetComponent<Position>().x = gridX;
         battery.GetComponent<Position>().y = gridY;
