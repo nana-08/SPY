@@ -53,7 +53,8 @@ public class OpenFileSystem : FSystem {
 
 		//create levels buttons
 		List<string> buttonsName = new List<string>();
-		foreach (string key in gameData.levels.Keys)
+        Debug.Log(gameData.levels.Keys.ToString());
+        foreach (string key in gameData.levels.Keys)
 			if (key != Utility.testFromLevelEditor) // // we don't create a button for tested level
 				buttonsName.Add(Utility.extractFileName(key));
 		buttonsName.Sort();

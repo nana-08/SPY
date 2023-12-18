@@ -336,7 +336,7 @@ public class LevelGenerator : FSystem {
 
 	private void createDecoration(string name, int gridX, int gridY, Direction.Dir orientation)
 	{
-		GameObject decoration = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/"+name) as GameObject, LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
+		GameObject decoration = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/"+name) as GameObject, LevelGO.transform.position + new Vector3(gridY*3,3,gridX*3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
 
 		decoration.GetComponent<Position>().x = gridX;
 		decoration.GetComponent<Position>().y = gridY;
@@ -346,7 +346,8 @@ public class LevelGenerator : FSystem {
 
     private void createBattery(int gridX, int gridY, Direction.Dir orientation)
     {
-        GameObject battery = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/PileOfBatteries") as GameObject, LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
+		Debug.Log("je passe dans createBattery");
+        GameObject battery = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/PileOfBatteries") as GameObject, LevelGO.transform.position + new Vector3(gridY*3,1.5f,gridX*3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
 
         battery.GetComponent<Position>().x = gridX;
         battery.GetComponent<Position>().y = gridY;
@@ -374,7 +375,6 @@ public class LevelGenerator : FSystem {
 
     private void createSwitch(int state, int gridX, int gridY, List<int> slotIDs, Direction.Dir orientation)
     {
-		Debug.Log("je passe dans createSwitch");
         GameObject activable = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/FloorSwitch") as GameObject, LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
 
         activable.GetComponent<Activable>().slotID = slotIDs;
