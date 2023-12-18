@@ -403,6 +403,7 @@ public class EditorGridSystem : FSystem
 			Cell.Console => consoleTile,
 			Cell.Coin => coinTile,
 			Cell.Switch => switchTile,
+			Cell.Battery => batteryTile,
 			_ => null
 		};
 	}
