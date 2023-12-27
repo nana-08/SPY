@@ -19445,6 +19445,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 361349218}
+    - target: {fileID: 3508364657353836126, guid: 3dce7a0df7989214ea5dbb548f234c1c,
+        type: 3}
+      propertyPath: text
+      value: "D\xE9poser des batteries"
+      objectReference: {fileID: 0}
     - target: {fileID: 5071584498515102782, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -19525,6 +19530,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7696253377360876725, guid: 3dce7a0df7989214ea5dbb548f234c1c,
+        type: 3}
+      propertyPath: actionPrefab
+      value: 
+      objectReference: {fileID: 1895250585064072365, guid: ca9021811b88d4345adb5ff14bd2fe0e,
+        type: 3}
     - target: {fileID: 8507923394146272110, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -21023,7 +21034,7 @@ PrefabInstance:
     - target: {fileID: 8507923395785239313, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0012161646
+      value: -0.00007338579
       objectReference: {fileID: 0}
     - target: {fileID: 8507923395788805750, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
