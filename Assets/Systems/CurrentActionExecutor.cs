@@ -7,6 +7,7 @@ using FYFY;
 public class CurrentActionExecutor : FSystem {
 	private Family f_wall = FamilyManager.getFamily(new AllOfComponents(typeof(Position)), new AnyOfTags("Wall", "Door"), new AnyOfProperties(PropertyMatcher.PROPERTY.ACTIVE_IN_HIERARCHY));
 	private Family f_activableConsole = FamilyManager.getFamily(new AllOfComponents(typeof(Activable),typeof(Position),typeof(AudioSource)));
+	private Family f_batteries = FamilyManager.getFamily(new AllOfComponents(typeof(Battery),typeof(Position),typeof(AudioSource)));
     private Family f_newCurrentAction = FamilyManager.getFamily(new AllOfComponents(typeof(CurrentAction), typeof(BasicAction)));
 	private Family f_agent = FamilyManager.getFamily(new AllOfComponents(typeof(ScriptRef), typeof(Position)));
 
@@ -116,7 +117,29 @@ public class CurrentActionExecutor : FSystem {
 				}
 				ca.agent.GetComponent<Animator>().SetTrigger("Action");
 				break;
-		}
+			case BasicAction.ActionType.PickBatteries:
+				/*Position agentPos1 = ca.agent.GetComponent<Position>();
+                foreach (GameObject actGo in f_batteries)
+                {
+                    if (actGo.GetComponent<Position>().x == agentPos1.x && actGo.GetComponent<Position>().y == agentPos1.y)
+                    {
+                        //actGo.GetComponent<AudioSource>().Play();
+                    }
+                }*/
+                ca.agent.GetComponent<Animator>().SetTrigger("PickBatteries");
+                break;
+            case BasicAction.ActionType.DropBatteries:
+                /*Position agentPos1 = ca.agent.GetComponent<Position>();
+                foreach (GameObject actGo in f_batteries)
+                {
+                    if (actGo.GetComponent<Position>().x == agentPos1.x && actGo.GetComponent<Position>().y == agentPos1.y)
+                    {
+                        //actGo.GetComponent<AudioSource>().Play();
+                    }
+                }*/
+                ca.agent.GetComponent<Animator>().SetTrigger("DropBatteries");
+                break;
+        }
 		ca.StopAllCoroutines();
 		if (ca.gameObject.activeInHierarchy)
 			ca.StartCoroutine(Utility.pulseItem(ca.gameObject));
@@ -222,4 +245,14 @@ public class CurrentActionExecutor : FSystem {
 		}
 		return false;
 	}
+
+	/*private bool checkFacingBatteries(GameObject robot)
+	{
+        foreach (GameObject go in f_batteries)
+        {
+            if (go.GetComponent<Position>().x == robot.GetComponent<Position>().x - 1 && go.GetComponent<Position>().y == robot.GetComponent<Position>().y && robot)
+                return true;
+        }
+        return false;
+    }*/
 }
