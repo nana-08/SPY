@@ -4,6 +4,7 @@ using System.Collections;
 
 /// <summary>
 /// Manage Doors and Consoles => open/close doors depending on consoles state
+/// new addition ====> floor switch
 /// </summary>
 public class DoorAndConsoleManager : FSystem {
 
@@ -13,7 +14,11 @@ public class DoorAndConsoleManager : FSystem {
 	private Family f_consoleOff = FamilyManager.getFamily(new AllOfComponents(typeof(Activable), typeof(Position), typeof(AudioSource)), new NoneOfComponents(typeof(TurnedOn)));
 	private Family f_doorPath = FamilyManager.getFamily(new AllOfComponents(typeof(DoorPath)));
 
-	private Family f_gameLoaded = FamilyManager.getFamily(new AllOfComponents(typeof(GameLoaded)));
+    private Family f_switch = FamilyManager.getFamily(new AllOfComponents(typeof(ActivableSwitch), typeof(Position)));
+    private Family f_switchOn = FamilyManager.getFamily(new AllOfComponents(typeof(ActivableSwitch), typeof(Position), typeof(AudioSource), typeof(TurnedOn)));
+    private Family f_switchOff = FamilyManager.getFamily(new AllOfComponents(typeof(ActivableSwitch), typeof(Position), typeof(AudioSource)), new NoneOfComponents(typeof(TurnedOn)));
+
+    private Family f_gameLoaded = FamilyManager.getFamily(new AllOfComponents(typeof(GameLoaded)));
 
 	private Family f_wall = FamilyManager.getFamily(new AllOfComponents(typeof(Position)), new AnyOfTags("Wall"), new AnyOfProperties(PropertyMatcher.PROPERTY.ACTIVE_IN_HIERARCHY));
 
@@ -29,9 +34,18 @@ public class DoorAndConsoleManager : FSystem {
 		GameObject go = GameObject.Find("GameData");
 		if (go != null)
 			gameData = go.GetComponent<GameData>();
-		f_consoleOn.addEntryCallback(onNewConsoleTurnedOn); // Console will enter in this family when TurnedOn component will be added to console (see CurrentActionExecutor)
-		f_consoleOff.addEntryCallback(onNewConsoleTurnedOff); // Console will enter in this family when TurnedOn component will be removed from console (see CurrentActionExecutor)
-		f_gameLoaded.addEntryCallback(connectDoorsAndConsoles);
+
+		if (f_console.Count > 0)
+		{
+            f_consoleOn.addEntryCallback(onNewConsoleTurnedOn); // Console will enter in this family when TurnedOn component will be added to console (see CurrentActionExecutor)
+            f_consoleOff.addEntryCallback(onNewConsoleTurnedOff); // Console will enter in this family when TurnedOn component will be removed from console (see CurrentActionExecutor)
+            f_gameLoaded.addEntryCallback(connectDoorsAndConsoles);
+        }
+		if (f_switch.Count > 0)
+		{
+            f_switchOn.addEntryCallback(onNewSwitchTurnedOn); // Switch will enter in this family when TurnedOn component will be added to switch (see CurrentActionExecutor)
+            f_switchOff.addEntryCallback(onNewSwitchTurnedOff); // Switch will enter in this family when TurnedOn component will be removed from switch (see CurrentActionExecutor)
+        }
 	}
 
 	private void onNewConsoleTurnedOn(GameObject consoleGO)
@@ -56,7 +70,29 @@ public class DoorAndConsoleManager : FSystem {
 		}
 	}
 
-	private void onNewConsoleTurnedOff(GameObject consoleGO)
+    private void onNewSwitchTurnedOn(GameObject switchGO)
+    {
+        ActivableSwitch activable = switchGO.GetComponent<ActivableSwitch>();
+        // parse all slot controled by this switch
+        foreach (int id in activable.slotID)
+        {
+            // parse all doors
+            foreach (GameObject slotGo in f_door)
+            {
+                // if slots are equals => enable door
+                if (slotGo.GetComponent<ActivationSlot>().slotID == id)
+                {
+                    // display door
+                    slotGo.transform.parent.GetComponent<AudioSource>().Play();
+                    slotGo.transform.parent.GetComponent<Animator>().SetTrigger("Close");
+                    slotGo.transform.parent.GetComponent<Animator>().speed = gameData.gameSpeed_current;
+                    updatePathColor(id, true);
+                }
+            }
+        }
+    }
+
+    private void onNewConsoleTurnedOff(GameObject consoleGO)
 	{
 		Activable activable = consoleGO.GetComponent<Activable>();
 		// parse all slot controled by this console
@@ -78,7 +114,29 @@ public class DoorAndConsoleManager : FSystem {
 		}
 	}
 
-	private void updatePathColor(int slotId, bool state)
+    private void onNewSwitchTurnedOff(GameObject switchGO)
+    {
+        ActivableSwitch activable = switchGO.GetComponent<ActivableSwitch>();
+        // parse all slot controled by this switch
+        foreach (int id in activable.slotID)
+        {
+            // parse all doors
+            foreach (GameObject slotGo in f_door)
+            {
+                // if slots are equals => disable door
+                if (slotGo.GetComponent<ActivationSlot>().slotID == id)
+                {
+                    // hide door
+                    slotGo.transform.parent.GetComponent<AudioSource>().Play();
+                    slotGo.transform.parent.GetComponent<Animator>().SetTrigger("Open");
+                    slotGo.transform.parent.GetComponent<Animator>().speed = gameData.gameSpeed_current;
+                    updatePathColor(id, false);
+                }
+            }
+        }
+    }
+
+    private void updatePathColor(int slotId, bool state)
     {
 		foreach(GameObject path in f_doorPath)
 			if (path.GetComponent<DoorPath>().slotId == slotId)

@@ -2593,6 +2593,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9433476ced47ced42ae6170b5aff88a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  switchOKMaterial: {fileID: 2100000, guid: 925b8f8d2e1a76345a0d355ee39d2345, type: 2}
+  switchBrokenMaterial: {fileID: 2100000, guid: a073a0ded80e6094fa4e9ed9954703ff,
+    type: 2}
+  switchLoadingAudioClip: {fileID: 8300000, guid: 846c5ca1cc77f4e3d963261b770e1e69,
+    type: 3}
+  switchBrokenAudioClip: {fileID: 8300000, guid: 3532cdd0d03ef40a9960ec71c769f220,
+    type: 3}
 --- !u!114 &361349236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19375,6 +19382,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1410401871}
     m_Modifications:
+    - target: {fileID: 662512977508112574, guid: 3dce7a0df7989214ea5dbb548f234c1c,
+        type: 3}
+      propertyPath: actionPrefab
+      value: 
+      objectReference: {fileID: 1895250585064072365, guid: 53c11cea30a0e2a48a33bf03e597aba8,
+        type: 3}
     - target: {fileID: 925661731772434897, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -19529,6 +19542,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822431139853131262, guid: 3dce7a0df7989214ea5dbb548f234c1c,
+        type: 3}
+      propertyPath: text
+      value: Activer l'interrupteur
       objectReference: {fileID: 0}
     - target: {fileID: 7524206142885989572, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
@@ -21084,7 +21102,7 @@ PrefabInstance:
     - target: {fileID: 8507923395785239313, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0005769511
+      value: -0.000039231258
       objectReference: {fileID: 0}
     - target: {fileID: 8507923395788805750, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}

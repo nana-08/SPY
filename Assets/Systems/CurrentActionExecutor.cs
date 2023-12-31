@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using FYFY;
+using System;
 
 /// <summary>
 /// This system executes new currentActions
@@ -12,7 +13,12 @@ public class CurrentActionExecutor : FSystem {
     private Family f_newCurrentAction = FamilyManager.getFamily(new AllOfComponents(typeof(CurrentAction), typeof(BasicAction)));
 	private Family f_agent = FamilyManager.getFamily(new AllOfComponents(typeof(ScriptRef), typeof(Position)));
 
-	protected override void onStart()
+	public Material switchOKMaterial;
+    public Material switchBrokenMaterial;
+	public AudioClip switchLoadingAudioClip;
+	public AudioClip switchBrokenAudioClip;
+
+    protected override void onStart()
 	{
 		f_newCurrentAction.addEntryCallback(onNewCurrentAction);
 		Pause = true;
@@ -103,21 +109,6 @@ public class CurrentActionExecutor : FSystem {
 				ApplyTurnBack(ca.agent);
 				break;
 			case BasicAction.ActionType.Wait:
-				// waiting on a switch activates it
-                Position agentPos1 = ca.agent.GetComponent<Position>();
-                foreach (GameObject switchGo in f_activableSwitch)
-                {
-                    if (switchGo.GetComponent<Position>().x == agentPos1.x && switchGo.GetComponent<Position>().y == agentPos1.y)
-                    {
-						// check the weight
-                        switchGo.GetComponent<AudioSource>().Play();
-                        // toggle switch GameObject
-                        if (switchGo.GetComponent<TurnedOn>())
-                            GameObjectManager.removeComponent<TurnedOn>(switchGo);
-                        else
-                            GameObjectManager.addComponent<TurnedOn>(switchGo);
-                    }
-                }
                 break;
 			case BasicAction.ActionType.Activate:
 				Position agentPos = ca.agent.GetComponent<Position>();
@@ -136,13 +127,13 @@ public class CurrentActionExecutor : FSystem {
 				break;
 			case BasicAction.ActionType.PickBatteries:
 				Position agentPos2 = ca.agent.GetComponent<Position>();
-                foreach (GameObject batteryGo in f_batteries)
+                /*foreach (GameObject batteryGo in f_batteries)
                 {
                     if (batteryGo.GetComponent<Position>().x == agentPos2.x && batteryGo.GetComponent<Position>().y == agentPos2.y)
                     {
                         //batteryGo.GetComponent<AudioSource>().Play();
                     }
-                }
+                }*/
 				Debug.Log("action executor pick batteries");
                 ca.agent.GetComponent<Animator>().SetTrigger("PickBatteries");
                 break;
@@ -150,6 +141,24 @@ public class CurrentActionExecutor : FSystem {
 				Debug.Log("action executor drop batteries");
                 ca.agent.GetComponent<Animator>().SetTrigger("DropBatteries");
                 break;
+			case BasicAction.ActionType.ActivateSwitch:
+                Position agentPos1 = ca.agent.GetComponent<Position>();
+                foreach (GameObject switchGo in f_activableSwitch)
+                {
+                    if (switchGo.GetComponent<Position>().x == agentPos1.x && switchGo.GetComponent<Position>().y == agentPos1.y)
+                    {
+						switchGo.GetComponent<AudioSource>().PlayOneShot(switchLoadingAudioClip);
+                        // check player's weight
+                        if (switchGo.GetComponent<TurnedOn>())
+							GameObjectManager.removeComponent<TurnedOn>(switchGo);
+						else
+						{
+							switchGo.GetComponentInChildren<MeshRenderer>().material = switchOKMaterial;
+                            GameObjectManager.addComponent<TurnedOn>(switchGo);
+						}
+					}
+                }
+				break;
         }
 		ca.StopAllCoroutines();
 		if (ca.gameObject.activeInHierarchy)

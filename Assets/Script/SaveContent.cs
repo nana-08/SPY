@@ -27,6 +27,7 @@ public class SaveContent {
         public bool state;
         public RawActivable(Activable act)
         {
+            Debug.Log("raw save");
             slotID = new List<int>(act.slotID);
             state = act.GetComponent<TurnedOn>();
         }
