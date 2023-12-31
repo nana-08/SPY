@@ -115,6 +115,7 @@ public class CurrentActionExecutor : FSystem {
 							GameObjectManager.addComponent<TurnedOn>(actGo);
 					}
 				}
+				Debug.Log("action executor activate");
 				ca.agent.GetComponent<Animator>().SetTrigger("Action");
 				break;
 			case BasicAction.ActionType.PickBatteries:
@@ -141,6 +142,8 @@ public class CurrentActionExecutor : FSystem {
 				Debug.Log("action executor drop batteries");
                 ca.agent.GetComponent<Animator>().SetTrigger("DropBatteries");
                 break;
+			case BasicAction.ActionType.ActivateSwitch:
+				break;
         }
 		ca.StopAllCoroutines();
 		if (ca.gameObject.activeInHierarchy)
