@@ -12,3 +12,14 @@ In sum players have to observe and model the simulation (abstraction), decompose
 You can play the game at: [https://spy.lip6.fr/](https://spy.lip6.fr/)
 
 SPY is developed with Unity and the [FYFY](https://github.com/Mocahteam/FYFY) library.
+
+
+
+
+# Additions by Loona, Jules and Nassim
+## Variables
+The notion of variable is now represented by the weight of the player. Some levels may need the player to be heavier, and weigh a specific number of kg to open doors. Now, doors can also be opened by activating floor switches and not only consoles. The floor switches are activated when the player is stepping on them with the right weight. The total weight of the player is shown on the screen when relevant (i.e in levels when a door needs to be opened by a floor switch).
+
+## Functions
+The notion of function is represented by the action of picking up and dropping batteries. 
+The player can encounter piles of batteries in some levels, and choose the amount of batteries to carry (the parameter of the function:). When executed, the function adds the weight of the batteries to the current weight of the robot. 

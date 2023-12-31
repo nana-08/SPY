@@ -6,7 +6,7 @@ using FYFY;
 /// </summary>
 public class CurrentActionExecutor : FSystem {
 	private Family f_wall = FamilyManager.getFamily(new AllOfComponents(typeof(Position)), new AnyOfTags("Wall", "Door"), new AnyOfProperties(PropertyMatcher.PROPERTY.ACTIVE_IN_HIERARCHY));
-	private Family f_activableConsole = FamilyManager.getFamily(new AllOfComponents(typeof(Activable),typeof(Position),typeof(AudioSource)));
+	private Family f_activableConsole = FamilyManager.getFamily(new AllOfComponents(typeof(Activable),typeof(Position),typeof(AudioSource)));	// console AND switch
 	private Family f_batteries = FamilyManager.getFamily(new AllOfComponents(typeof(Battery),typeof(Position),typeof(AudioSource)));
     private Family f_newCurrentAction = FamilyManager.getFamily(new AllOfComponents(typeof(CurrentAction), typeof(BasicAction)));
 	private Family f_agent = FamilyManager.getFamily(new AllOfComponents(typeof(ScriptRef), typeof(Position)));
@@ -126,6 +126,7 @@ public class CurrentActionExecutor : FSystem {
                         //actGo.GetComponent<AudioSource>().Play();
                     }
                 }*/
+				Debug.Log("action executor pick batteries");
                 ca.agent.GetComponent<Animator>().SetTrigger("PickBatteries");
                 break;
             case BasicAction.ActionType.DropBatteries:
@@ -137,6 +138,7 @@ public class CurrentActionExecutor : FSystem {
                         //actGo.GetComponent<AudioSource>().Play();
                     }
                 }*/
+				Debug.Log("action executor drop batteries");
                 ca.agent.GetComponent<Animator>().SetTrigger("DropBatteries");
                 break;
         }
@@ -222,6 +224,7 @@ public class CurrentActionExecutor : FSystem {
 	}
 
 	private void ApplyTurnBack(GameObject go){
+		Debug.Log("action excutor turn back");
 		switch (go.GetComponent<Direction>().direction){
 			case Direction.Dir.North:
 				go.GetComponent<Direction>().direction = Direction.Dir.South;
