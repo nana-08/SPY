@@ -374,15 +374,15 @@ public class LevelGenerator : FSystem {
 
     private void createSwitch(int state, int gridX, int gridY, List<int> slotIDs, Direction.Dir orientation)
     {
-        GameObject activable = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/FloorSwitch") as GameObject, LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
+        GameObject activableSwitch = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/FloorSwitch") as GameObject, LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
 
-        activable.GetComponent<Activable>().slotID = slotIDs;
-        activable.GetComponent<Position>().x = gridX;
-        activable.GetComponent<Position>().y = gridY;
-        activable.GetComponent<Direction>().direction = orientation;
+        activableSwitch.GetComponent<ActivableSwitch>().slotID = slotIDs;
+        activableSwitch.GetComponent<Position>().x = gridX;
+        activableSwitch.GetComponent<Position>().y = gridY;
+        activableSwitch.GetComponent<Direction>().direction = orientation;
         if (state == 1)
-            activable.AddComponent<TurnedOn>();
-        GameObjectManager.bind(activable);
+            activableSwitch.AddComponent<TurnedOn>();
+        GameObjectManager.bind(activableSwitch);
     }
 
     private void createSpawnExit(int gridX, int gridY, bool type, bool hideExit = false){

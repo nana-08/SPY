@@ -6,7 +6,7 @@ using FYFY;
 /// </summary>
 public class CurrentActionExecutor : FSystem {
 	private Family f_wall = FamilyManager.getFamily(new AllOfComponents(typeof(Position)), new AnyOfTags("Wall", "Door"), new AnyOfProperties(PropertyMatcher.PROPERTY.ACTIVE_IN_HIERARCHY));
-	private Family f_activableConsole = FamilyManager.getFamily(new AllOfComponents(typeof(Activable),typeof(Position),typeof(AudioSource)));	// console AND switch
+	private Family f_activable = FamilyManager.getFamily(new AllOfComponents(typeof(Activable),typeof(Position),typeof(AudioSource)));	// console AND switch
 	private Family f_batteries = FamilyManager.getFamily(new AllOfComponents(typeof(Battery),typeof(Position),typeof(AudioSource)));
     private Family f_newCurrentAction = FamilyManager.getFamily(new AllOfComponents(typeof(CurrentAction), typeof(BasicAction)));
 	private Family f_agent = FamilyManager.getFamily(new AllOfComponents(typeof(ScriptRef), typeof(Position)));
@@ -102,10 +102,23 @@ public class CurrentActionExecutor : FSystem {
 				ApplyTurnBack(ca.agent);
 				break;
 			case BasicAction.ActionType.Wait:
-				break;
+                Position agentPos1 = ca.agent.GetComponent<Position>();
+                foreach (GameObject switchGo in f_activable)
+                {
+                    if (switchGo.GetComponent<Position>().x == agentPos1.x && switchGo.GetComponent<Position>().y == agentPos1.y)
+                    {
+                        switchGo.GetComponent<AudioSource>().Play();
+                        // toggle activable GameObject
+                        if (switchGo.GetComponent<TurnedOn>())
+                            GameObjectManager.removeComponent<TurnedOn>(switchGo);
+                        else
+                            GameObjectManager.addComponent<TurnedOn>(switchGo);
+                    }
+                }
+                break;
 			case BasicAction.ActionType.Activate:
 				Position agentPos = ca.agent.GetComponent<Position>();
-				foreach ( GameObject actGo in f_activableConsole){
+				foreach ( GameObject actGo in f_activable){
 					if(actGo.GetComponent<Position>().x == agentPos.x && actGo.GetComponent<Position>().y == agentPos.y){
 						actGo.GetComponent<AudioSource>().Play();
 						// toggle activable GameObject
@@ -142,8 +155,6 @@ public class CurrentActionExecutor : FSystem {
 				Debug.Log("action executor drop batteries");
                 ca.agent.GetComponent<Animator>().SetTrigger("DropBatteries");
                 break;
-			case BasicAction.ActionType.ActivateSwitch:
-				break;
         }
 		ca.StopAllCoroutines();
 		if (ca.gameObject.activeInHierarchy)
