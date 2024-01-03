@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using FYFY;
 using System;
+using TMPro;
 
 /// <summary>
 /// This system executes new currentActions
@@ -17,6 +18,7 @@ public class CurrentActionExecutor : FSystem {
     public Material switchWrongMaterial;
 	public AudioClip switchLoadingAudioClip;
 	public AudioClip switchWrongAudioClip;
+	public GameObject playerWeight;
 
     protected override void onStart()
 	{
@@ -149,13 +151,17 @@ public class CurrentActionExecutor : FSystem {
                     {
 						switchGo.GetComponent<AudioSource>().PlayOneShot(switchLoadingAudioClip);
                         // check player's weight
-                        if (switchGo.GetComponent<TurnedOn>())
-							GameObjectManager.removeComponent<TurnedOn>(switchGo);
-						else
+						if (playerWeight.GetComponent<TextMeshPro>().text == (switchGo.GetComponent<ActivableSwitch>().weight.ToString())
 						{
-							switchGo.GetComponentInChildren<MeshRenderer>().material = switchRightMaterial;
-                            GameObjectManager.addComponent<TurnedOn>(switchGo);
-						}
+							Debug.Log("bon poids");
+                            if (switchGo.GetComponent<TurnedOn>())
+                                GameObjectManager.removeComponent<TurnedOn>(switchGo);
+                            else
+                            {
+                                switchGo.GetComponentInChildren<MeshRenderer>().material = switchRightMaterial;
+                                GameObjectManager.addComponent<TurnedOn>(switchGo);
+                            }
+                        }
 					}
                 }
 				break;

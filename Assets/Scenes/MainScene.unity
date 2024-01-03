@@ -5475,7 +5475,7 @@ GameObject:
   - component: {fileID: 670627170}
   - component: {fileID: 670627169}
   m_Layer: 5
-  m_Name: WeightCanvas
+  m_Name: PlayerWeight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5499,8 +5499,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 381.00003, y: 0}
-  m_SizeDelta: {x: 170, y: 110}
+  m_AnchoredPosition: {x: 303, y: 0}
+  m_SizeDelta: {x: 170, y: 80}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &670627169
 MonoBehaviour:
@@ -15151,7 +15151,7 @@ GameObject:
   - component: {fileID: 1832307669}
   - component: {fileID: 1832307668}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
