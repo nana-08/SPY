@@ -485,11 +485,13 @@ public class Console : FloorObject
 public class Switch : FloorObject
 {
     public string[] slots;
+	public string weight;
     public bool state;
 
     public Switch(Direction.Dir orientation, int line, int col) : base(Cell.Switch, orientation, line, col)
     {
         this.slots = new string[0];
+		this.weight = "50";
         this.state = true;
     }
 }

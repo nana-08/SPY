@@ -243,7 +243,7 @@ public class SaveFileSystem : FSystem
 					levelExport += "\t</console>\n\n";
 					break;
                 case Switch s:
-                    levelExport += "\t<switch state=\"" + (s.state ? "1" : "0") + "\" posX=\"" + (s.col + 1 - minCol) + "\" posY=\"" + (s.line + 1 - minLine) + "\" direction=\"" + (int)s.orientation + "\">\n";
+                    levelExport += "\t<switch state=\"" + (s.state ? "1" : "0") + "\" posX=\"" + (s.col + 1 - minCol) + "\" posY=\"" + (s.line + 1 - minLine) + "\" weight=\"" + s.weight + "\" direction=\"" + (int)s.orientation + "\">\n";
                     // add each slot
                     foreach (string slot in s.slots)
                         levelExport += "\t\t<slot slotId=\"" + slot + "\" />\n";

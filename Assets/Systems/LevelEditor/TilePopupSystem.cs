@@ -20,6 +20,7 @@ public class TilePopupSystem : FSystem
 	public GameObject rangePopup;
 	public GameObject consoleSlotsPopup;
 	public GameObject switchSlotsPopup;
+	public GameObject switchWeightPopup;
 	public GameObject doorSlotPopup;
 	public GameObject furniturePopup;
 
@@ -108,8 +109,10 @@ public class TilePopupSystem : FSystem
                     // enable popups
                     GameObjectManager.setGameObjectState(orientationPopup, true);
                     GameObjectManager.setGameObjectState(switchSlotsPopup, true);
+					GameObjectManager.setGameObjectState(switchWeightPopup, true);
                     // load data
                     switchSlotsPopup.GetComponentInChildren<TMP_InputField>().text = string.Join(", ", s.slots);
+                    switchWeightPopup.GetComponentInChildren<TMP_InputField>().text = s.weight;
                     switchSlotsPopup.GetComponentInChildren<Toggle>().isOn = s.state;
                     break;
                 case PlayerRobot pr:
@@ -249,6 +252,12 @@ public class TilePopupSystem : FSystem
             int[] ints = Array.ConvertAll(trimmed.Split(','), s => int.TryParse(s, out int x) ? x : -1);
             ((Switch)selectedObject).slots = trimmed.Split(',');
         }
+    }
+
+    public void popupSwitchWeight(string newData)
+    {
+        if (selectedObject != null)
+            ((Switch)selectedObject).weight = newData;
     }
 
     // see switchSlotsPopup GameObject childs
