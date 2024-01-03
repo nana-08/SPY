@@ -3,17 +3,17 @@ using FYFY;
 
 public class CurrentActionExecutor_wrapper : BaseWrapper
 {
-	public UnityEngine.Material switchOKMaterial;
-	public UnityEngine.Material switchBrokenMaterial;
+	public UnityEngine.Material switchRightMaterial;
+	public UnityEngine.Material switchWrongMaterial;
 	public UnityEngine.AudioClip switchLoadingAudioClip;
-	public UnityEngine.AudioClip switchBrokenAudioClip;
+	public UnityEngine.AudioClip switchWrongAudioClip;
 	private void Start()
 	{
 		this.hideFlags = HideFlags.NotEditable;
-		MainLoop.initAppropriateSystemField (system, "switchOKMaterial", switchOKMaterial);
-		MainLoop.initAppropriateSystemField (system, "switchBrokenMaterial", switchBrokenMaterial);
+		MainLoop.initAppropriateSystemField (system, "switchRightMaterial", switchRightMaterial);
+		MainLoop.initAppropriateSystemField (system, "switchWrongMaterial", switchWrongMaterial);
 		MainLoop.initAppropriateSystemField (system, "switchLoadingAudioClip", switchLoadingAudioClip);
-		MainLoop.initAppropriateSystemField (system, "switchBrokenAudioClip", switchBrokenAudioClip);
+		MainLoop.initAppropriateSystemField (system, "switchWrongAudioClip", switchWrongAudioClip);
 	}
 
 }

@@ -13,10 +13,10 @@ public class CurrentActionExecutor : FSystem {
     private Family f_newCurrentAction = FamilyManager.getFamily(new AllOfComponents(typeof(CurrentAction), typeof(BasicAction)));
 	private Family f_agent = FamilyManager.getFamily(new AllOfComponents(typeof(ScriptRef), typeof(Position)));
 
-	public Material switchOKMaterial;
-    public Material switchBrokenMaterial;
+	public Material switchRightMaterial;
+    public Material switchWrongMaterial;
 	public AudioClip switchLoadingAudioClip;
-	public AudioClip switchBrokenAudioClip;
+	public AudioClip switchWrongAudioClip;
 
     protected override void onStart()
 	{
@@ -153,7 +153,7 @@ public class CurrentActionExecutor : FSystem {
 							GameObjectManager.removeComponent<TurnedOn>(switchGo);
 						else
 						{
-							switchGo.GetComponentInChildren<MeshRenderer>().material = switchOKMaterial;
+							switchGo.GetComponentInChildren<MeshRenderer>().material = switchRightMaterial;
                             GameObjectManager.addComponent<TurnedOn>(switchGo);
 						}
 					}

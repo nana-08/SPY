@@ -40,6 +40,7 @@ public class SaveContent {
     public class RawActivableSwitch
     {
         public List<int> slotID;
+        public int weight;
         public bool state;
         public RawActivableSwitch(ActivableSwitch act)
         {
@@ -47,6 +48,7 @@ public class SaveContent {
             if (act.slotID != null)
             {
                 slotID = new List<int>(act.slotID);
+                weight = act.weight;
                 state = act.GetComponent<TurnedOn>();
             }
         }
