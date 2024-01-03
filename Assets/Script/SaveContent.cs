@@ -27,9 +27,28 @@ public class SaveContent {
         public bool state;
         public RawActivable(Activable act)
         {
-            Debug.Log("raw save");
-            slotID = new List<int>(act.slotID);
-            state = act.GetComponent<TurnedOn>();
+            Debug.Log("raw save activable");
+            if (act.slotID != null) 
+            {
+                slotID = new List<int>(act.slotID);
+                state = act.GetComponent<TurnedOn>();
+            }
+        }
+    }
+
+    [Serializable]
+    public class RawActivableSwitch
+    {
+        public List<int> slotID;
+        public bool state;
+        public RawActivableSwitch(ActivableSwitch act)
+        {
+            Debug.Log("raw save activableSwitch");
+            if (act.slotID != null)
+            {
+                slotID = new List<int>(act.slotID);
+                state = act.GetComponent<TurnedOn>();
+            }
         }
     }
 
@@ -62,6 +81,7 @@ public class SaveContent {
         public List<Direction.Dir> directions = new List<Direction.Dir>();
         public List<RawPosition> positions = new List<RawPosition>();
         public List<RawActivable> activables = new List<RawActivable>();
+        public List<RawActivableSwitch> activableSwitches = new List<RawActivableSwitch>();
         public List<RawCurrentAction> currentDroneActions = new List<RawCurrentAction>();
         public List<RawLoop> currentLoopParams = new List<RawLoop>();
     }
