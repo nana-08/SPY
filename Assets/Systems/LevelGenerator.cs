@@ -372,11 +372,12 @@ public class LevelGenerator : FSystem {
 		GameObjectManager.bind(activable);
 	}
 
-    private void createSwitch(int state, int gridX, int gridY, List<int> slotIDs, Direction.Dir orientation)
+    private void createSwitch(int state, int gridX, int gridY, List<int> slotIDs, int weight, Direction.Dir orientation)
     {
         GameObject activableSwitch = GameObject.Instantiate<GameObject>(Resources.Load("Prefabs/FloorSwitch") as GameObject, LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(0, 0, 0), LevelGO.transform);
 
         activableSwitch.GetComponent<ActivableSwitch>().slotID = slotIDs;
+		activableSwitch.GetComponent<ActivableSwitch>().weight = weight;
         activableSwitch.GetComponent<Position>().x = gridX;
         activableSwitch.GetComponent<Position>().y = gridY;
         activableSwitch.GetComponent<Direction>().direction = orientation;
@@ -472,16 +473,16 @@ public class LevelGenerator : FSystem {
 		 slotsID, (Direction.Dir)int.Parse(activableNode.Attributes.GetNamedItem("direction").Value));
 	}
 
-    private void readXMLSwitch(XmlNode activableNode)
+    private void readXMLSwitch(XmlNode activableSwitchNode)
     {
         List<int> slotsID = new List<int>();
 
-        foreach (XmlNode child in activableNode.ChildNodes)
+        foreach (XmlNode child in activableSwitchNode.ChildNodes)
         {
             slotsID.Add(int.Parse(child.Attributes.GetNamedItem("slotId").Value));
         }
 
-        createSwitch(int.Parse(activableNode.Attributes.GetNamedItem("state").Value), int.Parse(activableNode.Attributes.GetNamedItem("posX").Value), int.Parse(activableNode.Attributes.GetNamedItem("posY").Value),
-         slotsID, (Direction.Dir)int.Parse(activableNode.Attributes.GetNamedItem("direction").Value));
+        createSwitch(int.Parse(activableSwitchNode.Attributes.GetNamedItem("state").Value), int.Parse(activableSwitchNode.Attributes.GetNamedItem("posX").Value), int.Parse(activableSwitchNode.Attributes.GetNamedItem("posY").Value),
+         slotsID, int.Parse(activableSwitchNode.Attributes.GetNamedItem("weight").Value), (Direction.Dir)int.Parse(activableSwitchNode.Attributes.GetNamedItem("direction").Value));
     }
 }

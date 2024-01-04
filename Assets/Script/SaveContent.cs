@@ -27,7 +27,6 @@ public class SaveContent {
         public bool state;
         public RawActivable(Activable act)
         {
-            Debug.Log("raw save activable");
             if (act.slotID != null) 
             {
                 slotID = new List<int>(act.slotID);
@@ -44,7 +43,6 @@ public class SaveContent {
         public bool state;
         public RawActivableSwitch(ActivableSwitch act)
         {
-            Debug.Log("raw save activableSwitch");
             if (act.slotID != null)
             {
                 slotID = new List<int>(act.slotID);
