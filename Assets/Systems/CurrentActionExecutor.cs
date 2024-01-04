@@ -124,7 +124,6 @@ public class CurrentActionExecutor : FSystem {
 							GameObjectManager.addComponent<TurnedOn>(actGo);
 					}
 				}
-				Debug.Log("action executor activate");
 				ca.agent.GetComponent<Animator>().SetTrigger("Action");
 				break;
 			case BasicAction.ActionType.PickBatteries:

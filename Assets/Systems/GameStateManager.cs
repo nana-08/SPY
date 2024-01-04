@@ -12,6 +12,7 @@ public class GameStateManager : FSystem {
     private Family f_directions = FamilyManager.getFamily(new AllOfComponents(typeof(Direction)), new NoneOfComponents(typeof(Detector)));
     private Family f_positions = FamilyManager.getFamily(new AllOfComponents(typeof(Position)), new NoneOfComponents(typeof(Detector)));
     private Family f_activables = FamilyManager.getFamily(new AllOfComponents(typeof(Activable)));
+    private Family f_activableSwitches = FamilyManager.getFamily(new AllOfComponents(typeof(ActivableSwitch)));
     private Family f_currentActions = FamilyManager.getFamily(new AllOfComponents(typeof(CurrentAction)));
     private Family f_forControls = FamilyManager.getFamily(new AllOfComponents(typeof(ForControl)));
 
@@ -53,6 +54,9 @@ public class GameStateManager : FSystem {
         save.rawSave.activables.Clear();
         foreach (GameObject act in f_activables)
             save.rawSave.activables.Add(new SaveContent.RawActivable(act.GetComponent<Activable>()));
+        save.rawSave.activableSwitches.Clear();
+        foreach (GameObject act in f_activableSwitches)
+            save.rawSave.activableSwitches.Add(new SaveContent.RawActivableSwitch(act.GetComponent<ActivableSwitch>()));
         save.rawSave.currentDroneActions.Clear();    
         foreach(GameObject go in f_currentActions)
             if(go.GetComponent<CurrentAction>().agent.CompareTag("Drone"))
@@ -96,6 +100,21 @@ public class GameStateManager : FSystem {
             Activable act = f_activables.getAt(i).GetComponent<Activable>();
             act.slotID = save.rawSave.activables[i].slotID;
             if (save.rawSave.activables[i].state)
+            {
+                if (act.GetComponent<TurnedOn>() == null)
+                    GameObjectManager.addComponent<TurnedOn>(act.gameObject);
+            }
+            else
+            {
+                if (act.GetComponent<TurnedOn>() != null)
+                    GameObjectManager.removeComponent<TurnedOn>(act.gameObject);
+            }
+        }
+        for (int i = 0; i < f_activableSwitches.Count && i < save.rawSave.activableSwitches.Count; i++)
+        {
+            Activable act = f_activableSwitches.getAt(i).GetComponent<Activable>();
+            act.slotID = save.rawSave.activableSwitches[i].slotID;
+            if (save.rawSave.activableSwitches[i].state)
             {
                 if (act.GetComponent<TurnedOn>() == null)
                     GameObjectManager.addComponent<TurnedOn>(act.gameObject);

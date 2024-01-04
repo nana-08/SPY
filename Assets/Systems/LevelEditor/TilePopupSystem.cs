@@ -230,6 +230,7 @@ public class TilePopupSystem : FSystem
 	{
 		if (selectedObject != null)
 		{
+			Debug.Log("passage dans popupConsoleSlots, newData = "+newData);
 			string trimmed = String.Concat(newData.Where(c => !Char.IsWhiteSpace(c)));
 			int[] ints = Array.ConvertAll(trimmed.Split(','), s => int.TryParse(s, out int x) ? x : -1);
 			((Console)selectedObject).slots = trimmed.Split(',');
@@ -248,6 +249,7 @@ public class TilePopupSystem : FSystem
     {
         if (selectedObject != null)
         {
+            Debug.Log("passage dans popupSwitchSlots");
             string trimmed = String.Concat(newData.Where(c => !Char.IsWhiteSpace(c)));
             int[] ints = Array.ConvertAll(trimmed.Split(','), s => int.TryParse(s, out int x) ? x : -1);
             ((Switch)selectedObject).slots = trimmed.Split(',');

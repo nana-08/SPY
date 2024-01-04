@@ -14,9 +14,9 @@ public class DoorAndConsoleManager : FSystem {
 	private Family f_consoleOff = FamilyManager.getFamily(new AllOfComponents(typeof(Activable), typeof(Position), typeof(AudioSource)), new NoneOfComponents(typeof(TurnedOn)));
 	private Family f_doorPath = FamilyManager.getFamily(new AllOfComponents(typeof(DoorPath)));
 
-    private Family f_switch = FamilyManager.getFamily(new AllOfComponents(typeof(ActivableSwitch), typeof(Position)));
+    /*private Family f_switch = FamilyManager.getFamily(new AllOfComponents(typeof(ActivableSwitch), typeof(Position)));
     private Family f_switchOn = FamilyManager.getFamily(new AllOfComponents(typeof(ActivableSwitch), typeof(Position), typeof(AudioSource), typeof(TurnedOn)));
-    private Family f_switchOff = FamilyManager.getFamily(new AllOfComponents(typeof(ActivableSwitch), typeof(Position), typeof(AudioSource)), new NoneOfComponents(typeof(TurnedOn)));
+    private Family f_switchOff = FamilyManager.getFamily(new AllOfComponents(typeof(ActivableSwitch), typeof(Position), typeof(AudioSource)), new NoneOfComponents(typeof(TurnedOn)));*/
 
     private Family f_gameLoaded = FamilyManager.getFamily(new AllOfComponents(typeof(GameLoaded)));
 
@@ -35,22 +35,20 @@ public class DoorAndConsoleManager : FSystem {
 		if (go != null)
 			gameData = go.GetComponent<GameData>();
 
-		if (f_console.Count > 0)
-		{
-            f_consoleOn.addEntryCallback(onNewConsoleTurnedOn); // Console will enter in this family when TurnedOn component will be added to console (see CurrentActionExecutor)
-            f_consoleOff.addEntryCallback(onNewConsoleTurnedOff); // Console will enter in this family when TurnedOn component will be removed from console (see CurrentActionExecutor)
-            f_gameLoaded.addEntryCallback(connectDoorsAndConsoles);
-        }
-		if (f_switch.Count > 0)
-		{
-            f_switchOn.addEntryCallback(onNewSwitchTurnedOn); // Switch will enter in this family when TurnedOn component will be added to switch (see CurrentActionExecutor)
-            f_switchOff.addEntryCallback(onNewSwitchTurnedOff); // Switch will enter in this family when TurnedOn component will be removed from switch (see CurrentActionExecutor)
-        }
+		Debug.Log("door and console manager");
+		f_consoleOn.addEntryCallback(onNewConsoleTurnedOn); // Console will enter in this family when TurnedOn component will be added to console (see CurrentActionExecutor)
+        f_consoleOff.addEntryCallback(onNewConsoleTurnedOff); // Console will enter in this family when TurnedOn component will be removed from console (see CurrentActionExecutor)
+        f_gameLoaded.addEntryCallback(connectDoorsAndConsoles);
+
+		/*f_switchOn.addEntryCallback(onNewSwitchTurnedOn); // Switch will enter in this family when TurnedOn component will be added to switch (see CurrentActionExecutor)
+        f_switchOff.addEntryCallback(onNewSwitchTurnedOff); // Switch will enter in this family when TurnedOn component will be removed from switch (see CurrentActionExecutor)*/
 	}
 
 	private void onNewConsoleTurnedOn(GameObject consoleGO)
     {
+		Debug.Log(consoleGO.gameObject.name);
 		Activable activable = consoleGO.GetComponent<Activable>();
+		Debug.Log("component Activable exists: " + (consoleGO.GetComponent("Activable")));
 		// parse all slot controled by this console
 		foreach (int id in activable.slotID)
 		{
