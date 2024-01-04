@@ -151,8 +151,6 @@ public class CurrentActionExecutor : FSystem {
                     {
 						switchGo.GetComponent<AudioSource>().PlayOneShot(switchLoadingAudioClip);
 						// check player's weight
-						Debug.Log("player weight: "+playerWeight.GetComponent<TMP_Text>().text);
-						Debug.Log("switch weight: "+switchGo.GetComponent<ActivableSwitch>().weight.ToString());
                         if (playerWeight.GetComponent<TMP_Text>().text == (switchGo.GetComponent<ActivableSwitch>().weight.ToString()))
 						{
 							Debug.Log("bon poids");
