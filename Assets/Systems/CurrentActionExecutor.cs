@@ -150,8 +150,10 @@ public class CurrentActionExecutor : FSystem {
                     if (switchGo.GetComponent<Position>().x == agentPos1.x && switchGo.GetComponent<Position>().y == agentPos1.y)
                     {
 						switchGo.GetComponent<AudioSource>().PlayOneShot(switchLoadingAudioClip);
-                        // check player's weight
-						if (playerWeight.GetComponent<TextMeshPro>().text == (switchGo.GetComponent<ActivableSwitch>().weight.ToString()))
+						// check player's weight
+						Debug.Log("player weight: "+playerWeight.GetComponent<TMP_Text>().text);
+						Debug.Log("switch weight: "+switchGo.GetComponent<ActivableSwitch>().weight.ToString());
+                        if (playerWeight.GetComponent<TMP_Text>().text == (switchGo.GetComponent<ActivableSwitch>().weight.ToString()))
 						{
 							Debug.Log("bon poids");
                             if (switchGo.GetComponent<TurnedOn>())
