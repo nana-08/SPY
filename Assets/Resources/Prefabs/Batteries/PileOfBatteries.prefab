@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: -2102359364172382211}
   - component: {fileID: 4677533350149408309}
   - component: {fileID: 1707112363292308615}
+  - component: {fileID: 9219745400636424783}
   m_Layer: 0
   m_Name: PileOfBatteries
   m_TagString: Untagged
@@ -212,6 +213,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9219745400636424783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8861499244877312333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e3f543d9c466d4bbfb6ff8f609898b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8861499243354374494
 PrefabInstance:
   m_ObjectHideFlags: 0
