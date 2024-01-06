@@ -3714,9 +3714,9 @@ RectTransform:
   - {fileID: 1951139758}
   - {fileID: 1040234186}
   - {fileID: 1375197364}
+  - {fileID: 333649274}
   - {fileID: 603169608}
   - {fileID: 1292786174}
-  - {fileID: 333649274}
   - {fileID: 464032272}
   - {fileID: 1119209253}
   - {fileID: 1337397018}
@@ -5725,7 +5725,7 @@ PrefabInstance:
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
@@ -5795,7 +5795,7 @@ PrefabInstance:
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1020
+      value: 780
       objectReference: {fileID: 0}
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
@@ -8527,7 +8527,7 @@ PrefabInstance:
     - target: {fileID: 913189549516347102, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
       propertyPath: m_text
-      value: Prendre batteries
+      value: Gain batteries
       objectReference: {fileID: 0}
     - target: {fileID: 3758512718671024415, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
@@ -8548,13 +8548,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6109002559498680889, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
+      propertyPath: m_Color.b
+      value: 0.4117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109002559498680889, guid: a22043a09aa4568449e6e9e2b6479fed,
+        type: 3}
       propertyPath: m_Color.g
-      value: 0.5019608
+      value: 0.09803921
       objectReference: {fileID: 0}
     - target: {fileID: 6109002559498680889, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.6666667
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6605428313136555806, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
@@ -8574,7 +8579,7 @@ PrefabInstance:
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
@@ -8644,7 +8649,7 @@ PrefabInstance:
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 780
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
@@ -17943,7 +17948,7 @@ PrefabInstance:
     - target: {fileID: 913189549516347102, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
       propertyPath: m_text
-      value: "D\xE9poser batteries"
+      value: "D\xE9p\xF4t batteries"
       objectReference: {fileID: 0}
     - target: {fileID: 3758512718671024415, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
@@ -17964,13 +17969,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6109002559498680889, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
+      propertyPath: m_Color.b
+      value: 0.4117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109002559498680889, guid: a22043a09aa4568449e6e9e2b6479fed,
+        type: 3}
       propertyPath: m_Color.g
-      value: 0.5019608
+      value: 0.09803921
       objectReference: {fileID: 0}
     - target: {fileID: 6109002559498680889, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.6666667
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6605428313136555806, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
@@ -17990,7 +18000,7 @@ PrefabInstance:
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
@@ -18060,7 +18070,7 @@ PrefabInstance:
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 900
+      value: 1020
       objectReference: {fileID: 0}
     - target: {fileID: 6605428313136555807, guid: a22043a09aa4568449e6e9e2b6479fed,
         type: 3}

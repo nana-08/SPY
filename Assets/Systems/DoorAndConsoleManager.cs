@@ -35,7 +35,6 @@ public class DoorAndConsoleManager : FSystem {
 		if (go != null)
 			gameData = go.GetComponent<GameData>();
 
-		Debug.Log("door and console manager");
 		f_consoleOn.addEntryCallback(onNewConsoleTurnedOn); // Console will enter in this family when TurnedOn component will be added to console (see CurrentActionExecutor)
         f_consoleOff.addEntryCallback(onNewConsoleTurnedOff); // Console will enter in this family when TurnedOn component will be removed from console (see CurrentActionExecutor)
         f_gameLoaded.addEntryCallback(connectDoorsAndConsoles);

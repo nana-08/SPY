@@ -178,6 +178,14 @@ public class CurrentActionManager : FSystem
 				// always return firstchild of this ForeverControl
 				return rec_getFirstActionOf(action.GetComponent<ForeverControl>().firstChild, agent);
 			}
+			else if (action.GetComponent<PickUpBatteriesFunction>())
+			{
+				PickUpBatteriesFunction pickUpBatFunc = action.GetComponent<PickUpBatteriesFunction>();
+            }
+			else if (action.GetComponent<DropBatteriesFunction>())
+			{
+                DropBatteriesFunction dropBatFunc = action.GetComponent<DropBatteriesFunction>();
+            }
 		}
 		return null;
 	}
