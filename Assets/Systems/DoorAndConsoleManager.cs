@@ -68,9 +68,9 @@ public class DoorAndConsoleManager : FSystem {
 
     private void onNewSwitchTurnedOn(GameObject switchGO)
     {
-        ActivableSwitch activable = switchGO.GetComponent<ActivableSwitch>();
+        ActivableSwitch activableSwitch = switchGO.GetComponent<ActivableSwitch>();
         // parse all slot controled by this switch
-        foreach (int id in activable.slotID)
+        foreach (int id in activableSwitch.slotID)
         {
             // parse all doors
             foreach (GameObject slotGo in f_door)
@@ -112,9 +112,9 @@ public class DoorAndConsoleManager : FSystem {
 
     private void onNewSwitchTurnedOff(GameObject switchGO)
     {
-        ActivableSwitch activable = switchGO.GetComponent<ActivableSwitch>();
+        ActivableSwitch activableSwitch = switchGO.GetComponent<ActivableSwitch>();
         // parse all slot controled by this switch
-        foreach (int id in activable.slotID)
+        foreach (int id in activableSwitch.slotID)
         {
             // parse all doors
             foreach (GameObject slotGo in f_door)
