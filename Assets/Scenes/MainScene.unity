@@ -2593,13 +2593,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9433476ced47ced42ae6170b5aff88a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchRightMaterial: {fileID: 2100000, guid: 925b8f8d2e1a76345a0d355ee39d2345, type: 2}
-  switchWrongMaterial: {fileID: 2100000, guid: a073a0ded80e6094fa4e9ed9954703ff, type: 2}
-  switchLoadingAudioClip: {fileID: 8300000, guid: 846c5ca1cc77f4e3d963261b770e1e69,
+  switchOKMaterial: {fileID: 2100000, guid: a073a0ded80e6094fa4e9ed9954703ff, type: 2}
+  switchNOKMaterial: {fileID: 2100000, guid: 925b8f8d2e1a76345a0d355ee39d2345, type: 2}
+  switchScanAudioClip: {fileID: 8300000, guid: ffaca9c1ce69b1f4aaeefc5cd980a4c4, type: 3}
+  switchNOKAudioClip: {fileID: 8300000, guid: 55a2e358d8a512448baf402750290cca, type: 3}
+  switchOKAudioClip: {fileID: 8300000, guid: f1df991802ed7b74e8c5fa70d9a6440b, type: 3}
+  pickUpBatteryAudioClip: {fileID: 8300000, guid: a4e83387f245e4d4ca621448f0c43038,
     type: 3}
-  switchWrongAudioClip: {fileID: 8300000, guid: 3532cdd0d03ef40a9960ec71c769f220,
+  dropBatteryAudioClip: {fileID: 8300000, guid: 7c4569c370ea540498f4e14d9e261ddf,
     type: 3}
-  playerWeight: {fileID: 1912142895}
+  playerCurrentWeight: {fileID: 1912142895}
 --- !u!114 &361349236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10117,7 +10120,7 @@ PrefabInstance:
     - target: {fileID: 6605428313136555807, guid: 44a902a8db4c35b4481db0d54b1edb95,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6605428313136555807, guid: 44a902a8db4c35b4481db0d54b1edb95,
         type: 3}
@@ -14174,7 +14177,7 @@ PrefabInstance:
     - target: {fileID: 6605428313136555807, guid: 44a902a8db4c35b4481db0d54b1edb95,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6605428313136555807, guid: 44a902a8db4c35b4481db0d54b1edb95,
         type: 3}
@@ -15657,7 +15660,7 @@ PrefabInstance:
     - target: {fileID: 1575353410021479323, guid: 3320765803d90cb49a7b33d18ba49e3c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1575353410021479323, guid: 3320765803d90cb49a7b33d18ba49e3c,
         type: 3}
@@ -19595,7 +19598,7 @@ PrefabInstance:
     - target: {fileID: 4388592725029408208, guid: c730839317428ec4aa62a94711b0357d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4388592725029408208, guid: c730839317428ec4aa62a94711b0357d,
         type: 3}
@@ -21668,7 +21671,7 @@ PrefabInstance:
     - target: {fileID: 8507923395785239313, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00010991155
+      value: 0.00004812953
       objectReference: {fileID: 0}
     - target: {fileID: 8507923395788805750, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}

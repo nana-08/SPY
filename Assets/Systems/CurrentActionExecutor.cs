@@ -14,11 +14,14 @@ public class CurrentActionExecutor : FSystem {
     private Family f_newCurrentAction = FamilyManager.getFamily(new AllOfComponents(typeof(CurrentAction), typeof(BasicAction)));
 	private Family f_agent = FamilyManager.getFamily(new AllOfComponents(typeof(ScriptRef), typeof(Position)));
 
-	public Material switchRightMaterial;
-    public Material switchWrongMaterial;
-	public AudioClip switchLoadingAudioClip;
-	public AudioClip switchWrongAudioClip;
-	public GameObject playerWeight;
+	public Material switchOKMaterial;
+    public Material switchNOKMaterial;
+	public AudioClip switchScanAudioClip;
+	public AudioClip switchNOKAudioClip;
+	public AudioClip switchOKAudioClip;
+	public AudioClip pickUpBatteryAudioClip;
+	public AudioClip dropBatteryAudioClip;
+	public GameObject playerCurrentWeight;
 
     protected override void onStart()
 	{
@@ -94,10 +97,11 @@ public class CurrentActionExecutor : FSystem {
 	private void onNewCurrentAction(GameObject currentAction) {
 		Pause = false; // activates onProcess to identify inactive robots
 		
-		CurrentAction ca = currentAction.GetComponent<CurrentAction>();	
+		CurrentAction ca = currentAction.GetComponent<CurrentAction>();
 
-		// process action depending on action type
-		switch (currentAction.GetComponent<BasicAction>().actionType){
+        Position agentPos = ca.agent.GetComponent<Position>();
+        // process action depending on action type
+        switch (currentAction.GetComponent<BasicAction>().actionType){
 			case BasicAction.ActionType.Forward:
 				ApplyForward(ca.agent);
 				break;
@@ -113,7 +117,6 @@ public class CurrentActionExecutor : FSystem {
 			case BasicAction.ActionType.Wait:
                 break;
 			case BasicAction.ActionType.Activate:
-				Position agentPos = ca.agent.GetComponent<Position>();
 				foreach ( GameObject actGo in f_activable){
 					if(actGo.GetComponent<Position>().x == agentPos.x && actGo.GetComponent<Position>().y == agentPos.y){
 						actGo.GetComponent<AudioSource>().Play();
@@ -127,37 +130,44 @@ public class CurrentActionExecutor : FSystem {
 				ca.agent.GetComponent<Animator>().SetTrigger("Action");
 				break;
 			case BasicAction.ActionType.PickBatteries:
-				Position agentPos2 = ca.agent.GetComponent<Position>();
-                /*foreach (GameObject batteryGo in f_batteries)
+                Debug.Log("picking up batteries");
+                foreach (GameObject batteryGo in f_batteries)
                 {
-                    if (batteryGo.GetComponent<Position>().x == agentPos2.x && batteryGo.GetComponent<Position>().y == agentPos2.y)
+					Debug.Log("picking up batteries");
+                    if (batteryGo.GetComponent<Position>().x == agentPos.x && batteryGo.GetComponent<Position>().y == agentPos.y)
                     {
-                        //batteryGo.GetComponent<AudioSource>().Play();
+						Debug.Log("found batteries");
+                        batteryGo.GetComponent<AudioSource>().PlayOneShot(pickUpBatteryAudioClip);
                     }
-                }*/
-				Debug.Log("action executor pick batteries");
-                ca.agent.GetComponent<Animator>().SetTrigger("PickBatteries");
+                }
+                // ca.agent.GetComponent<Animator>().SetTrigger("PickBatteries");	// animation not really working for now
                 break;
             case BasicAction.ActionType.DropBatteries:
-				Debug.Log("action executor drop batteries");
-                ca.agent.GetComponent<Animator>().SetTrigger("DropBatteries");
+				int agentWeight = ca.agent.GetComponent<Weight>().weight;
+				if (int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text) > agentWeight)	// i.e you can drop batteries only if you are carrying some
+				{
+                    foreach (GameObject batteryGo in f_batteries)
+                    {
+                        batteryGo.GetComponent<AudioSource>().PlayOneShot(dropBatteryAudioClip);
+                    }
+                }
+                // ca.agent.GetComponent<Animator>().SetTrigger("DropBatteries");	// animation not really working for now
                 break;
 			case BasicAction.ActionType.ActivateSwitch:
-                Position agentPos1 = ca.agent.GetComponent<Position>();
                 foreach (GameObject switchGo in f_activableSwitch)
                 {
-                    if (switchGo.GetComponent<Position>().x == agentPos1.x && switchGo.GetComponent<Position>().y == agentPos1.y)
+                    if (switchGo.GetComponent<Position>().x == agentPos.x && switchGo.GetComponent<Position>().y == agentPos.y)
                     {
-						switchGo.GetComponent<AudioSource>().PlayOneShot(switchLoadingAudioClip);
+						switchGo.GetComponent<AudioSource>().PlayOneShot(switchScanAudioClip);
 						// check player's weight
-                        if (playerWeight.GetComponent<TMP_Text>().text == (switchGo.GetComponent<ActivableSwitch>().weight.ToString()))
+                        if (int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text) == switchGo.GetComponent<ActivableSwitch>().weight)
 						{
 							Debug.Log("bon poids");
                             if (switchGo.GetComponent<TurnedOn>())
                                 GameObjectManager.removeComponent<TurnedOn>(switchGo);
                             else
                             {
-                                switchGo.GetComponentInChildren<MeshRenderer>().material = switchRightMaterial;
+                                switchGo.GetComponentInChildren<MeshRenderer>().material = switchOKMaterial;
                                 GameObjectManager.addComponent<TurnedOn>(switchGo);
                             }
                         }
