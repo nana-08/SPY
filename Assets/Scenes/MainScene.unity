@@ -19976,6 +19976,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 274284777620641119, guid: 3dce7a0df7989214ea5dbb548f234c1c,
+        type: 3}
+      propertyPath: m_Name
+      value: PickBatteries
+      objectReference: {fileID: 0}
     - target: {fileID: 662512977508112574, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
       propertyPath: actionPrefab
@@ -20058,6 +20063,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 361349218}
+    - target: {fileID: 3127638919365334941, guid: 3dce7a0df7989214ea5dbb548f234c1c,
+        type: 3}
+      propertyPath: m_Name
+      value: PickUpBatteriesLimit
+      objectReference: {fileID: 0}
     - target: {fileID: 3508364657353836126, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
       propertyPath: text
@@ -21752,7 +21762,7 @@ PrefabInstance:
     - target: {fileID: 8507923395785239313, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0006518845
+      value: -0.000029295905
       objectReference: {fileID: 0}
     - target: {fileID: 8507923395788805750, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}

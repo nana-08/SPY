@@ -77,7 +77,11 @@ public class BlocLimitationManager : FSystem
 				go.GetComponent<LibraryItemRef>().linkedTo = getLibraryItemByName("IfElse");
 			else if (go.GetComponent<IfControl>())
 				go.GetComponent<LibraryItemRef>().linkedTo = getLibraryItemByName("IfThen");
-		}
+			else if (go.GetComponent<PickUpBatteriesFunction>())
+				go.GetComponent<LibraryItemRef>().linkedTo = getLibraryItemByName("PickBatteries");
+            else if (go.GetComponent<DropBatteriesFunction>())
+                go.GetComponent<LibraryItemRef>().linkedTo = getLibraryItemByName("DropBatteries");
+        }
 	}
 
 	private GameObject getLibraryItemByName(string name)
