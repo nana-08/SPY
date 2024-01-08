@@ -187,6 +187,13 @@ public class CurrentActionManager : FSystem
 			else if (action.GetComponent<DropBatteriesFunction>())
 			{
                 DropBatteriesFunction dropBatFunc = action.GetComponent<DropBatteriesFunction>();
+				int playerCurrentWeightValue = int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text);
+                int agentWeight = agent.GetComponent<Weight>().weight;
+
+				if (playerCurrentWeightValue - dropBatFunc.nbBatteriesParameter >= agentWeight)
+					playerCurrentWeight.GetComponent<TMP_Text>().text = (int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text) - dropBatFunc.nbBatteriesParameter).ToString();
+				else
+					Debug.Log("Impossible to drop that much batteries!");
             }
 		}
 		return null;
