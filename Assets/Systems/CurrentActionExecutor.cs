@@ -2,6 +2,7 @@
 using FYFY;
 using System;
 using TMPro;
+using TinCan;
 
 /// <summary>
 /// This system executes new currentActions
@@ -129,27 +130,39 @@ public class CurrentActionExecutor : FSystem {
 				}
 				ca.agent.GetComponent<Animator>().SetTrigger("Action");
 				break;
-			/*case BasicAction.ActionType.PickBatteries:
+			case BasicAction.ActionType.PickBatteries:
                 foreach (GameObject batteryGo in f_batteries)
                 {
                     if (batteryGo.GetComponent<Position>().x == agentPos.x && batteryGo.GetComponent<Position>().y == agentPos.y)
                     {
                         batteryGo.GetComponent<AudioSource>().PlayOneShot(pickUpBatteryAudioClip);
+
+                        int pickParameterValue = int.Parse(currentAction.GetComponentInChildren<TMP_InputField>().text);
+                        playerCurrentWeight.GetComponent<TMP_Text>().text = (int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text) + pickParameterValue).ToString();
+
+                        // ca.agent.GetComponent<Animator>().SetTrigger("PickBatteries");	// animation not really working for now
                     }
                 }
-                // ca.agent.GetComponent<Animator>().SetTrigger("PickBatteries");	// animation not really working for now
                 break;
             case BasicAction.ActionType.DropBatteries:
 				int agentWeight = ca.agent.GetComponent<Weight>().weight;
-				if (int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text) > agentWeight)	// i.e you can drop batteries only if you are carrying some
+                int playerCurrentWeightValue = int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text);
+                int dropParameterValue = int.Parse(currentAction.GetComponentInChildren<TMP_InputField>().text);
+
+                if (playerCurrentWeightValue - dropParameterValue >= agentWeight)
 				{
                     foreach (GameObject batteryGo in f_batteries)
                     {
                         batteryGo.GetComponent<AudioSource>().PlayOneShot(dropBatteryAudioClip);
+                        break;
                     }
-                }
+
+                    playerCurrentWeight.GetComponent<TMP_Text>().text = (playerCurrentWeightValue - dropParameterValue).ToString();
+                } 
+                else
+                    Debug.Log("Impossible to drop that much batteries!");
                 // ca.agent.GetComponent<Animator>().SetTrigger("DropBatteries");	// animation not really working for now
-                break;*/
+                break;
 			case BasicAction.ActionType.ActivateSwitch:
                 foreach (GameObject switchGo in f_activableSwitch)
                 {

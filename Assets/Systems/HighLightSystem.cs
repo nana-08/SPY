@@ -36,7 +36,6 @@ public class HighLightSystem : FSystem {
 
 	private void propagateColor(GameObject go, bool useHighlightColor)
     {
-		Debug.Log("passage dans propagate Color go = "+go.name+", useHighlightColor = "+useHighlightColor);
 		Selectable sel = go.GetComponent<Selectable>();
 		Color color = useHighlightColor ? sel.colors.highlightedColor : sel.colors.normalColor;
 		if (!sel.interactable)

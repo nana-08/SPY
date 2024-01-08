@@ -179,9 +179,10 @@ public class CurrentActionManager : FSystem
 				// always return firstchild of this ForeverControl
 				return rec_getFirstActionOf(action.GetComponent<ForeverControl>().firstChild, agent);
 			}
-			else if (action.GetComponent<PickUpBatteriesFunction>())
+			/*else if (action.GetComponent<PickUpBatteriesFunction>())
 			{
 				PickUpBatteriesFunction pickUpBatFunc = action.GetComponent<PickUpBatteriesFunction>();
+				Debug.Log((int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text) + pickUpBatFunc.nbBatteriesParameter).ToString());
                 playerCurrentWeight.GetComponent<TMP_Text>().text = (int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text)+ pickUpBatFunc.nbBatteriesParameter).ToString();
             }
 			else if (action.GetComponent<DropBatteriesFunction>())
@@ -194,7 +195,7 @@ public class CurrentActionManager : FSystem
 					playerCurrentWeight.GetComponent<TMP_Text>().text = (int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text) - dropBatFunc.nbBatteriesParameter).ToString();
 				else
 					Debug.Log("Impossible to drop that much batteries!");
-            }
+            }*/
 		}
 		return null;
 	}

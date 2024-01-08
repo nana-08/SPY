@@ -115,11 +115,10 @@ GameObject:
   - component: {fileID: 8975173999718096042}
   - component: {fileID: 2820316675881674071}
   - component: {fileID: 5490486634600155314}
-  - component: {fileID: 1821386107763206041}
-  - component: {fileID: 3725543901987595035}
-  - component: {fileID: 7656247056633976378}
+  - component: {fileID: 8725470619166544381}
+  - component: {fileID: 7158476172263235068}
   m_Layer: 5
-  m_Name: Function_DropBatteries
+  m_Name: Action_PickUpBatteries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da366280509c2874aa0abd598cabb17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1821386107763206041
+--- !u!114 &8725470619166544381
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -415,28 +414,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 589826222410828797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dfd155565e079141a506899adc2ccfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targets:
-  - {fileID: 2708551338548765598}
---- !u!114 &3725543901987595035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589826222410828797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5218e1679209d02498a08f473fd8d8fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fa89efc89768f040be0b9afc977170e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseColor: {r: 1, g: 1, b: 1, a: 1}
   highlightedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   next: {fileID: 0}
-  nbBatteriesParameter: 0
---- !u!114 &7656247056633976378
+  actionType: 6
+--- !u!114 &7158476172263235068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1154,7 +1139,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 32dd41c1005d0574685944aa134ed8f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7fe8494aadb74934e866f1f03e6a5d69, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
