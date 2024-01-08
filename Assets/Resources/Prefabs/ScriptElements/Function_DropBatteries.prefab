@@ -419,8 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2708551338548765598}
 --- !u!114 &3725543901987595035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +435,7 @@ MonoBehaviour:
   baseColor: {r: 1, g: 1, b: 1, a: 1}
   highlightedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   next: {fileID: 0}
+  nbBatteriesParameter: 0
 --- !u!114 &7656247056633976378
 MonoBehaviour:
   m_ObjectHideFlags: 0
