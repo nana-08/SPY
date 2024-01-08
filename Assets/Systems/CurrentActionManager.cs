@@ -29,6 +29,7 @@ public class CurrentActionManager : FSystem
 	private bool infiniteLoopDetected;
 
 	public static CurrentActionManager instance;
+	public GameObject playerCurrentWeight;
 
 	public CurrentActionManager()
 	{
@@ -181,6 +182,7 @@ public class CurrentActionManager : FSystem
 			else if (action.GetComponent<PickUpBatteriesFunction>())
 			{
 				PickUpBatteriesFunction pickUpBatFunc = action.GetComponent<PickUpBatteriesFunction>();
+                playerCurrentWeight.GetComponent<TMP_Text>().text = (int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text)+ pickUpBatFunc.nbBatteriesParameter).ToString();
             }
 			else if (action.GetComponent<DropBatteriesFunction>())
 			{

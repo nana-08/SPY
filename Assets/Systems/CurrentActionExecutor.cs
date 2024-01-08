@@ -129,7 +129,7 @@ public class CurrentActionExecutor : FSystem {
 				}
 				ca.agent.GetComponent<Animator>().SetTrigger("Action");
 				break;
-			case BasicAction.ActionType.PickBatteries:
+			/*case BasicAction.ActionType.PickBatteries:
                 foreach (GameObject batteryGo in f_batteries)
                 {
                     if (batteryGo.GetComponent<Position>().x == agentPos.x && batteryGo.GetComponent<Position>().y == agentPos.y)
@@ -149,7 +149,7 @@ public class CurrentActionExecutor : FSystem {
                     }
                 }
                 // ca.agent.GetComponent<Animator>().SetTrigger("DropBatteries");	// animation not really working for now
-                break;
+                break;*/
 			case BasicAction.ActionType.ActivateSwitch:
                 foreach (GameObject switchGo in f_activableSwitch)
                 {

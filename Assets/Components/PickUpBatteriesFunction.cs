@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PickUpBatteriesFunction : BaseElement
 {
-    int nbBatteriesParameter;
+    public int nbBatteriesParameter;
 }
