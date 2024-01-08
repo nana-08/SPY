@@ -174,13 +174,13 @@ public class CurrentActionExecutor : FSystem {
 						{
 							Debug.Log("bon poids");
 							switchGo.GetComponent<AudioSource>().PlayOneShot(switchOKAudioClip);
-                            if (switchGo.GetComponent<TurnedOn>())
-                                GameObjectManager.removeComponent<TurnedOn>(switchGo);
-                            else
-                            {
+							if (switchGo.GetComponent<TurnedOn>())
+							{
                                 switchGo.GetComponentInChildren<MeshRenderer>().material = switchOKMaterial;
-                                GameObjectManager.addComponent<TurnedOn>(switchGo);
-                            }
+                                GameObjectManager.removeComponent<TurnedOn>(switchGo);
+							}
+							else
+								GameObjectManager.addComponent<TurnedOn>(switchGo);
                         }
 						else
 						{
