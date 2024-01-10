@@ -214,7 +214,6 @@ public class ScriptGenerator : FSystem {
 		Transform conditionContainer = null;
 		Transform firstContainerBloc = null;
 		Transform secondContainerBloc = null;
-		Debug.Log(actionNode.Name);
 		switch (actionNode.Name)
 		{
 			case "if":
