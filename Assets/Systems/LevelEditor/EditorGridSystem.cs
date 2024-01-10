@@ -217,6 +217,9 @@ public class EditorGridSystem : FSystem
 
                         int state = int.Parse(child.Attributes.GetNamedItem("state").Value);
                         ((Switch)paintableGrid.floorObjects[position]).state = state == 1;
+
+                        int weight = int.Parse(child.Attributes.GetNamedItem("weight").Value);
+                        ((Switch)paintableGrid.floorObjects[position]).weight = weight.ToString();
                     }
                     catch
                     {
