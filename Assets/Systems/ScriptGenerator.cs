@@ -330,26 +330,6 @@ public class ScriptGenerator : FSystem {
 				if (actionNode.HasChildNodes)
 					processXMLInstruction(firstContainerBloc, actionNode);
 				break;
-            case "pickBatteries":
-                obj = Utility.createEditableBlockFromLibrary(getLibraryItemByName("PickBatteries"), mainCanvas);
-                BaseElement funcPick = obj.GetComponent<PickUpBatteriesFunction>();
-
-                ((PickUpBatteriesFunction)funcPick).nbBatteriesParameter = int.Parse(actionNode.Attributes.GetNamedItem("nbBatteriesParameter").Value);
-                obj.transform.GetComponentInChildren<TMP_InputField>().text = ((PickUpBatteriesFunction)funcPick).nbBatteriesParameter.ToString();
-
-                if (actionNode.HasChildNodes)
-                    processXMLInstruction(firstContainerBloc, actionNode);
-                break;
-            case "dropBatteries":
-                obj = Utility.createEditableBlockFromLibrary(getLibraryItemByName("DropBatteries"), mainCanvas);
-                BaseElement funcDrop = obj.GetComponent<DropBatteriesFunction>();
-
-                ((DropBatteriesFunction)funcDrop).nbBatteriesParameter = int.Parse(actionNode.Attributes.GetNamedItem("nbBatteriesParameter").Value);
-                obj.transform.GetComponentInChildren<TMP_InputField>().text = ((DropBatteriesFunction)funcDrop).nbBatteriesParameter.ToString();
-
-                if (actionNode.HasChildNodes)
-                    processXMLInstruction(firstContainerBloc, actionNode);
-                break;
             case "action":
 				obj = Utility.createEditableBlockFromLibrary(getLibraryItemByName(actionNode.Attributes.GetNamedItem("type").Value), mainCanvas);
 				break;

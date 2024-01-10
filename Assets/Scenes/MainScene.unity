@@ -2594,9 +2594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9433476ced47ced42ae6170b5aff88a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchOKMaterial: {fileID: 2100000, guid: a073a0ded80e6094fa4e9ed9954703ff, type: 2}
-  switchNOKMaterial: {fileID: 2100000, guid: 925b8f8d2e1a76345a0d355ee39d2345, type: 2}
-  switchScanAudioClip: {fileID: 8300000, guid: ffaca9c1ce69b1f4aaeefc5cd980a4c4, type: 3}
+  switchOKMaterial: {fileID: 2100000, guid: 925b8f8d2e1a76345a0d355ee39d2345, type: 2}
   switchNOKAudioClip: {fileID: 8300000, guid: 55a2e358d8a512448baf402750290cca, type: 3}
   switchOKAudioClip: {fileID: 8300000, guid: f1df991802ed7b74e8c5fa70d9a6440b, type: 3}
   pickUpBatteryAudioClip: {fileID: 8300000, guid: a4e83387f245e4d4ca621448f0c43038,
@@ -21773,7 +21771,7 @@ PrefabInstance:
     - target: {fileID: 8507923395785239313, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000103924576
+      value: 0.00059648213
       objectReference: {fileID: 0}
     - target: {fileID: 8507923395788805750, guid: 3dce7a0df7989214ea5dbb548f234c1c,
         type: 3}

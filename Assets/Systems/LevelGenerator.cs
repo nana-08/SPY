@@ -381,6 +381,7 @@ public class LevelGenerator : FSystem {
         activableSwitch.GetComponent<Position>().x = gridX;
         activableSwitch.GetComponent<Position>().y = gridY;
         activableSwitch.GetComponent<Direction>().direction = orientation;
+		activableSwitch.GetComponentInChildren<TMP_Text>().text = weight.ToString();
         if (state == 1)
             activableSwitch.AddComponent<TurnedOn>();
         GameObjectManager.bind(activableSwitch);

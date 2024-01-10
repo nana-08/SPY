@@ -16,8 +16,8 @@ public class CurrentActionExecutor : FSystem {
 	private Family f_agent = FamilyManager.getFamily(new AllOfComponents(typeof(ScriptRef), typeof(Position)));
 
 	public Material switchOKMaterial;
-    public Material switchNOKMaterial;
-	public AudioClip switchScanAudioClip;
+    //public Material switchNOKMaterial;
+	//public AudioClip switchScanAudioClip;
 	public AudioClip switchNOKAudioClip;
 	public AudioClip switchOKAudioClip;
 	public AudioClip pickUpBatteryAudioClip;
@@ -168,15 +168,14 @@ public class CurrentActionExecutor : FSystem {
                 {
                     if (switchGo.GetComponent<Position>().x == agentPos.x && switchGo.GetComponent<Position>().y == agentPos.y)
                     {
-						switchGo.GetComponent<AudioSource>().PlayOneShot(switchScanAudioClip);
+						//switchGo.GetComponent<AudioSource>().PlayOneShot(switchScanAudioClip);
 						// check player's weight
                         if (int.Parse(playerCurrentWeight.GetComponent<TMP_Text>().text) == switchGo.GetComponent<ActivableSwitch>().weight)
 						{
-							Debug.Log("bon poids");
 							switchGo.GetComponent<AudioSource>().PlayOneShot(switchOKAudioClip);
-							if (switchGo.GetComponent<TurnedOn>())
+                            switchGo.GetComponentInChildren<MeshRenderer>().material = switchOKMaterial;
+                            if (switchGo.GetComponent<TurnedOn>())
 							{
-                                switchGo.GetComponentInChildren<MeshRenderer>().material = switchOKMaterial;
                                 GameObjectManager.removeComponent<TurnedOn>(switchGo);
 							}
 							else
