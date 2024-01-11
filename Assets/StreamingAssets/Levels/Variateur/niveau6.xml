@@ -82,6 +82,8 @@
 
 	<door posX="2" posY="10" slotId="0" direction="0" />
 
+	<player inputLine="Bob" posX="1" posY="12" direction="0" />
+
 	<script outputLine="Bob" editMode="0" type="3">
 	</script>
 

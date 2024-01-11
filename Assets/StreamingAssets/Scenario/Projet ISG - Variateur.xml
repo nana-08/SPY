@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<scenario name="Projet ISG - Variateur" desc="Ce scénario permet de travailler la notion de variable. Le robot va devoir faire varier son poids pour débloquer son chemin vers la sortie.">
+	<level src = "Levels/Variateur/niveau1.xml" name = "niveau1" >
+		<dialogs>
+			<dialog text ="Cette porte ne s'ouvre pas par le biais d'un terminal. En revanche, il y a un interrupteur devant elle. Essaie de l'activer une fois dessus, pour voir..." enableInteraction ="1" />
+		</dialogs>
+	</level>
+	<level src = "Levels/Variateur/niveau2.xml" name = "niveau2" />
+	<level src = "Levels/Variateur/niveau3.xml" name = "niveau3" >
+		<dialogs>
+			<dialog text ="Cette fois-ci, ton poids ne suffira pas à activer l'interrupteur... mais ça tombe bien, il y a une pile de batteries usagées. Tu peux en porter quelques unes pour peser plus lourd. Change la masse de batteries à porter dans la fonction Prendre des batteries pour peser assez lourd et ouvrir la porte." enableInteraction ="1" />
+		</dialogs>
+	</level>
+	<level src = "Levels/Variateur/niveau4.xml" name = "niveau4" />
+	<level src = "Levels/Variateur/niveau5.xml" name = "niveau5" >
+		<dialogs>
+			<dialog text ="La deuxième porte nécessite un poids plus faible pour être déverrouillée. Utilise la fonction Déposer des batteries pour t'alléger un petit peu." enableInteraction ="1" />
+		</dialogs>
+	</level>
+	<level src = "Levels/Variateur/niveau6.xml" name = "niveau6" />
+</scenario>
