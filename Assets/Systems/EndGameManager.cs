@@ -131,7 +131,7 @@ public class EndGameManager : FSystem {
 			int _score = (10000 / (gameData.totalActionBlocUsed + 1) + 5000 / (gameData.totalStep + 1) + 6000 / (gameData.totalExecute + 1) + 5000 * gameData.totalCoin);
 			GameObjectManager.setGameObjectState(endPanel.transform.Find("ScoreCanvas").gameObject, true);
 			Debug.Log("Score: " + _score);
-			setScoreStars(_score, endPanel.transform.Find("ScoreCanvas"));
+			int scoredStars = setScoreStars(_score, endPanel.transform.Find("ScoreCanvas"));
 
 			endPanel.GetComponent<AudioSource>().clip = Resources.Load("Sound/VictorySound") as AudioClip;
 			endPanel.GetComponent<AudioSource>().loop = false;
@@ -165,6 +165,7 @@ public class EndGameManager : FSystem {
 				endPanel.GetComponentInChildren<TextMeshProUGUI>().text = gameData.localization[44];
 				MainLoop.instance.StartCoroutine(delayNewButtonFocused(buttons.Find("NextLevel").gameObject));
 			}
+			DataLevel levelToLoad = gameData.scenarios[gameData.selectedScenario].levels[gameData.levelToLoad];
 			MainLoop.instance.StartCoroutine(delaySendStatement(endPanel, new
 			{
 				verb = "completed",
@@ -172,8 +173,10 @@ public class EndGameManager : FSystem {
 				result = true,
 				success = 1,
 				resultExtensions = new Dictionary<string, string>() {
-					{ "score", _score.ToString() }
-				}
+					{ "score", _score.ToString() },
+					{ "value", scoredStars.ToString()},
+					{ "progress", levelToLoad.name }
+				}	
 			}));
 		}
 		else if (f_requireEndPanel.First().GetComponent<NewEnd>().endType == NewEnd.BadCondition)
@@ -307,7 +310,7 @@ public class EndGameManager : FSystem {
 	}
 
 	// Gére le nombre d'étoile à afficher selon le score obtenue
-	private void setScoreStars(int score, Transform scoreCanvas)
+	private int setScoreStars(int score, Transform scoreCanvas)
 	{
 		// Détermine le nombre d'étoile à afficher
 		int scoredStars = 0;
@@ -354,6 +357,7 @@ public class EndGameManager : FSystem {
 				GameObjectManager.addComponent<SendUserData>(MainLoop.instance.gameObject);
 			}
 		}
+		return scoredStars;
 	}
 
 	// Cancel End (see ReloadState button in editor)
