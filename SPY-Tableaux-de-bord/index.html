@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord - Étoiles</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
+    <script defer src="https://code.highcharts.com/highcharts.js"></script>
+    <script defer src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer type="text/javascript" src=star.js></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script type="text/javascript" src="lib/tincan.js"></script>
+    <script defer type="text/javascript" src="request.js"> </script>
+    <script defer type="text/javascript" src="plot_manager.js"></script>
+</head>
+<body>
+
+    <div id="main_form">
+        <div id="connection_status">
+            Connection en cours...<br>
+        </div>
+        <!-- div pour demander a l'utilisateur  -->
+        <!-- l'identifiant des élèves -->
+        <div id="student_form" class="form">
+            <h3>🧑‍🎓Identifiant de l'élève : </h3>
+            <p>Une fois la communication avec le LRS établie ✅, vous pouvez ajouter des élèves au groupe de travail en utilisant leur identifiant</p>
+            <!-- <label for="eleve">🧑‍🎓Identifiant de l'élève : </label> -->
+            <div>
+                <input type="text" id="input_student_id" name="student_id" title="student_id" placeholder="ID d'un étudiant" class="input_form"/>
+                <input type="button" class="button" value="Ajouter" onclick="addStudent()" />
+            </div>
+        </div>
+    </div>
+    <!-- On crée une div pour afficher les élève que l'on a ajouter à la classe pour le monment  -->
+    <div id="class_manager">
+        <div id="divClasse">
+            <h3>📒Classe :</h3>
+            <p>Voici la liste des élèves de la classe</p>
+            <ul id="student_list">
+            </ul>
+        </div>
+        <!-- button pour reset la classe -->
+        <input type="button" class="button"  value="Réinitialiser la classe" onclick="resetClass()" />
+    </div>
+
+    
+    <!-- input pour ajouter des objectifs -->
+    <div id="objectif_form" class="form">
+        <!-- <label for="objectif">🎯Objectif : </label> -->
+        <h3>🎯Objectif : </h3>
+        <p>Vous pouvez ici ajouter des objectifs d'étoile ⭐ à récupérer pour l'ensemble du groupe !</p>
+        <div>
+            <input type="text" id="input_goal" name="objectif" title="objectif" placeholder="nombre d'étoiles à collecter" class="input_form"/>
+            <input type="button" class="button" value="Ajouter" onclick="add_goal()" />
+        </div>
+    </div>
+
+    <!-- button pour démarrer la visualisation des donnés -->
+    <!-- il est désactiver tant qu'il n'y a pas de nom dans la liste d'élèves -->
+    <input type="button" class="button" id="start" value="Démarrer la visualisation" onclick="start_viz()" disabled="true" />
+
+    <div id="main-canvas">
+        <div id="star-count">
+            <img id="star-icon" src="star.png" alt="">
+            <div>Etoiles obtenues: </div>
+            <div id="star-counter">0</div>
+        </div>
+        <div id="goal_list">
+                
+        </div>
+        <div id="goal_achieved"></div>
+    </div>
+
+    <!-- plot part -->
+
+    <div class="form" id="statistic">
+        <h3>📈Statistiques :</h3>
+        <p>Voici les statistiques de la classe, 
+            vous pouvez choisir les statistiques d'un élève en particulier</p>
+        <div id="student_select">
+            <select id="stats_selector" onchange="update_plot()">
+                <option value="all">--Sélectionez un élève--</option>
+            </select>
+        </div>
+        <figure class="highcharts-figure">
+            <div id="star-chart"></div>
+        </figure>
+    </div>
+
+</body>
+</html>
