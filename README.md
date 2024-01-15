@@ -23,3 +23,9 @@ The notion of variable is now represented by the weight of the player. Some leve
 ## Functions
 The notion of function is represented by the action of picking up and dropping batteries. 
 The player can encounter piles of batteries in some levels, and choose the amount of batteries (in kg) to carry/drop (the parameter of the function). When executed, the function adds/substracts the weight of the batteries to the current weight of the robot. 
+
+## Things we did not have the time to do
+* Fix the animations
+* Display the player's current weight only when relevant, i.e in levels requiring to activate a switch
+* Try with 2 robots: adapt the UI to have the weight of the robot and its name
+* Better UI display: attach the weight to the robot prefab (when relevant) so that it appears above its head like the switch weight. Also make it face the camera at all times
